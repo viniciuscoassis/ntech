@@ -13,23 +13,19 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   onClick,
 }) => {
   return (
-    <div className='flex flex-row items-center'>
+    <div
+      className='flex hover:bg-slate-300
+        hover:bg-opacity-10
+        cursor-pointer  w-full  p-4 align-middle '
+    >
       <div
         className='relative
-        rounded-full
-        h-14
-        w-14
         flex
-        items-center
-        justify-center
-        p-4
-        hover:bg-slate-300
-        hover:bg-opacity-10
-        cursor-pointer bg-red-500
-        lg-hidden
         '
       >
+        <Icon size={28} color='white' />
       </div>
+      <div className=' hidden md:block ml-2 text-left text-white'>{label}</div>
     </div>
   );
 };

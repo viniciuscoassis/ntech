@@ -6,6 +6,7 @@ import {FaCity} from "react-icons/fa"
 import {MdOutlineSecurity} from 'react-icons/md'
 import {HiOutlineDocumentReport} from 'react-icons/hi'
 import {IoMdKey} from "react-icons/io"
+import SidebarFooter from './SIdebarFooter';
 
 const Sidebar = () => {
   const items = [
@@ -18,6 +19,24 @@ const Sidebar = () => {
       label: 'Infraestrutura',
       href: '/client/infraestrutura',
       icon: BsFillGearFill,
+      children: [
+        {
+          label: 'Cidade',
+          href: '/client/infraestrutura/cidade',
+        },
+        {
+          label: 'Estados',
+          href: '/client/infraestrutura/estados',
+        },
+        {
+          label: 'Base de monitoramento',
+          href: '/client/infraestrutura/base-de-monitoramento',
+        },
+        {
+          label: 'Servidores',
+          href: '/client/infraestrutura/servidores',
+        }
+      ],
     },
     {
       label: 'Condomínios',
@@ -46,15 +65,16 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className=' bg-white col-span-1 h-full pr-4 md:pr-6'>
+    <div className=' bg-sky-950 col-span-1 h-full p-3 md:pr-6 relative'>
       <div className='flex flex-col'>
-        <div className=' space-y-2 '>
+        <div className='space-y-1 justify-center'>
           <SidebarLogo />
           {items.map((item, index) => (
             <SidebarItem key={index} label={item.label} href={item.href} icon={item.icon} />
           ))}
         </div>
       </div>
+      <SidebarFooter/>
     </div>
   );
 };

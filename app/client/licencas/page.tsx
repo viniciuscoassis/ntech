@@ -1,4 +1,4 @@
-export default function Condominios(){
+export default function Licencas(){
     return (
       <>
         <h1 className=' text-3xl text-white'>Teste</h1>

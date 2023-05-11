@@ -1,4 +1,4 @@
-export default function Condominios(){
+export default function Relatorios(){
     return (
       <>
         <h1 className=' text-3xl text-white'>Teste</h1>

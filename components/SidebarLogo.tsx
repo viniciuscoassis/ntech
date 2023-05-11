@@ -8,16 +8,16 @@ const SidebarLogo = () => {
   return (
     <div onClick={() => {router.push('/')}} 
     className='
-    siz
+     text-white
+     border-b-[1px]
     bd-red-300 
-    rounded-full 
     h-14
     p-4
     flex
-    items-center 
     justify-center 
-    hover:bg-red-300 hover:bg-opacity-10 cursor-pointer transition'>
-        <div className="">N-GATEWAY</div>
+     items-center
+    hover:bg-red-300 hover:bg-opacity-10 cursor-pointer transition bottom-5'>
+        <div className=" text-2xl ">N-GATEWAY</div>
     </div>
   );
 };
