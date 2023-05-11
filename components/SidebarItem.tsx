@@ -5,7 +5,14 @@ interface SidebarItemProps {
   href?: string;
   icon: IconType;
   onClick?: () => void;
+  children?: ChildProps[];
 }
+interface ChildProps {
+  label: string;
+  href: string;
+}
+
+
 const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   href,

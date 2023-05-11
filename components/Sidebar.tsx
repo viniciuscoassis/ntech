@@ -19,7 +19,7 @@ const Sidebar = () => {
       label: 'Infraestrutura',
       href: '/client/infraestrutura',
       icon: BsFillGearFill,
-      children: [
+      childrens: [
         {
           label: 'Cidade',
           href: '/client/infraestrutura/cidade',
@@ -35,7 +35,7 @@ const Sidebar = () => {
         {
           label: 'Servidores',
           href: '/client/infraestrutura/servidores',
-        }
+        },
       ],
     },
     {
@@ -47,6 +47,20 @@ const Sidebar = () => {
       label: 'VPNs',
       href: '/client/vpns',
       icon: RiRouteFill,
+      childrens: [
+        {
+          label: 'Peers Site-to-Site',
+          href: '/client/vpns/site-to-site',
+        },
+        {
+          label: 'Peers Site-to-Client',
+          href: '/client/vpns/site-to-client',
+        },
+        {
+          label: 'Vpns Ativas',
+          href: '/client/vpns/vpns-ativas',
+        },
+      ],
     },
     {
       label: 'Segurança',
@@ -57,6 +71,12 @@ const Sidebar = () => {
       label: 'Relatórios',
       href: '/client/relatorios',
       icon: HiOutlineDocumentReport,
+      childrens: [
+        {
+          label: 'Autenticações VPN',
+          href: '/client/relatorios/autenticacoes-vpn',
+        },
+      ],
     },
     {
       label: 'Licenças',
