@@ -1,11 +1,6 @@
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 
-interface HomeProps {
-
-}
-
-
 export default function Home() {
   return (
     <>
