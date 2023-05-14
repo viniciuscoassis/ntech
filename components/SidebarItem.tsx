@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { IconType } from 'react-icons';
 
 interface SidebarItemProps {
@@ -6,24 +7,29 @@ interface SidebarItemProps {
   icon: IconType;
   onClick?: () => void;
   children?: ChildProps[];
+  open: boolean;
 }
 interface ChildProps {
   label: string;
   href: string;
 }
 
-
 const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   href,
   icon: Icon,
   onClick,
+  open,
+  children,
 }) => {
+  const router = useRouter();
+
   return (
     <div
       className='flex hover:bg-slate-300
         hover:bg-opacity-10
         cursor-pointer  w-full  p-4 align-middle '
+      onClick={() => router.push(`${href}`)}
     >
       <div
         className='relative
@@ -32,7 +38,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       >
         <Icon size={28} color='white' />
       </div>
-      <div className=' hidden md:block ml-2 text-left text-white'>{label}</div>
+      <div
+        className={` ${open ? 'block' : 'hidden'} ml-2 text-left text-white`}
+      >
+        {label}
+      </div>
     </div>
   );
 };

@@ -1,13 +1,20 @@
-'use client'
-import { useRouter } from "next/navigation";
+'use client';
+import { useRouter } from 'next/navigation';
+import { TbCircleLetterN } from 'react-icons/tb';
 
-const SidebarLogo = () => {
+interface Props {
+  open: boolean;
+}
 
-    const router = useRouter();
+const SidebarLogo: React.FC<Props> = ({ open }) => {
+  const router = useRouter();
 
   return (
-    <div onClick={() => {router.push('/')}} 
-    className='
+    <div
+      onClick={() => {
+        router.push('/');
+      }}
+      className='
      text-white
      border-b-[1px]
     bd-red-300 
@@ -16,8 +23,11 @@ const SidebarLogo = () => {
     flex
     justify-center 
      items-center
-    hover:bg-red-300 hover:bg-opacity-10 cursor-pointer transition bottom-5'>
-        <div className=" text-2xl ">N-GATEWAY</div>
+    hover:bg-red-300 hover:bg-opacity-10 cursor-pointer transition bottom-5'
+    >
+      <div className={`${open ? '' : ' w-full justify-center'} text-2xl`}>
+        {open ? 'N-GATEWAY' : <TbCircleLetterN size={38} />}
+      </div>
     </div>
   );
 };

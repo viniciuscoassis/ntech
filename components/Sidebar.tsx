@@ -1,12 +1,15 @@
+'use client';
 import SidebarItem from './SidebarItem';
 import SidebarLogo from './SidebarLogo';
 import { RiDashboardLine, RiRouteFill } from 'react-icons/ri';
-import {BsFillGearFill} from 'react-icons/bs'
-import {FaCity} from "react-icons/fa"
-import {MdOutlineSecurity} from 'react-icons/md'
-import {HiOutlineDocumentReport} from 'react-icons/hi'
-import {IoMdKey} from "react-icons/io"
+import { BsFillGearFill } from 'react-icons/bs';
+import { FaCity } from 'react-icons/fa';
+import { MdOutlineSecurity } from 'react-icons/md';
+import { HiOutlineDocumentReport } from 'react-icons/hi';
+import { IoMdKey } from 'react-icons/io';
+import { AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import SidebarFooter from './SIdebarFooter';
+import { useState } from 'react';
 
 const Sidebar = () => {
   const items = [
@@ -84,17 +87,36 @@ const Sidebar = () => {
       icon: IoMdKey,
     },
   ];
+  const [open, setOpen] = useState(false);
   return (
-    <div className=' bg-sky-950 col-span-1 h-full p-3 md:pr-6 relative'>
+    <div
+      className={`${
+        open ? 'w-72' : 'w-20'
+      } bg-sky-950 col-span-1 h-full p-3 md:pr-6 relative transition-all duration-500`}
+    >
+      <div
+        className=' flex items-center justify-center absolute cursor-pointer rounded-full -right-3 top-9 w-7 h-7 border-2 bg-white border-sky-950'
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}
+      </div>
       <div className='flex flex-col'>
         <div className='space-y-1 justify-center'>
-          <SidebarLogo />
+          <SidebarLogo open={open} />
           {items.map((item, index) => (
-            <SidebarItem key={index} label={item.label} href={item.href} icon={item.icon} />
+            <SidebarItem
+              key={index}
+              label={item.label}
+              href={item.href}
+              icon={item.icon}
+              open={open}
+            />
           ))}
         </div>
       </div>
-      <SidebarFooter/>
+      <SidebarFooter open={open}/>
     </div>
   );
 };
