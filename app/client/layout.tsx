@@ -6,7 +6,7 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className=' h-screen bg-black'>
+    <div className=' h-screen'>
       <div className=' container h-full  xl:px-30 max-w-6xl'>
         <div className='flex  h-full'>
           <Sidebar />

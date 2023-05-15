@@ -1,7 +1,13 @@
+'use client'
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
+import useRegisterModal from "@/hooks/useRegisterModal";
 
 export default function Home() {
+
+  const registerModal = useRegisterModal();
+
+  
   return (
     <>
     <RegisterModal/>
@@ -10,7 +16,7 @@ export default function Home() {
         <div>
           <h1>NTECH NETWORK E COMUNICAÇÃO</h1>
           <p>LOGUE-SE PARA CONTINUAR</p>
-          <button>login</button>
+          <button onClick={registerModal.onOpen}>login</button>
         </div>
       </div>
     </>
