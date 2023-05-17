@@ -35,7 +35,7 @@ const RegisterModal = () => {
       });
 
       toast.success('Conta criada.');
-      signIn('credentials', {email, password});
+      await signIn('credentials', {email, password});
 
       registerModal.onClose();
     } catch (err) {
