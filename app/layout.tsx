@@ -1,3 +1,4 @@
+import AuthContext from './context/AuthContext';
 import './globals.css'
 
 export default function RootLayout({
@@ -7,7 +8,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <AuthContext>
+        <body>{children}</body>
+      </AuthContext>
     </html>
-  )
+  );
 }
