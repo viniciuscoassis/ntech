@@ -29,10 +29,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       className='flex hover:bg-slate-300
         hover:bg-opacity-10
         cursor-pointer  w-full  p-4 align-middle '
-      onClick={() => router.push(`${href}`)}
+      onClick={onClick? onClick : () => router.push(`${href}`)}
     >
       <div
-        className='relative
+        className='
+        relative
         flex
         '
       >

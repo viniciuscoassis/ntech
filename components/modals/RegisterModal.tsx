@@ -54,28 +54,29 @@ const RegisterModal = () => {
         disabled={isLoading}
       />
       <Input
-        placeholder='name'
+        placeholder='nome'
         onChange={(e) => setName(e.target.value)}
         value={name}
         disabled={isLoading}
       />
       <Input
-        placeholder='password'
+        placeholder='senha'
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}
+        type='password'
       />
     </div>
   );
 
   const footerContent = (
     <div className='flex mx-auto text-neutral-400 text-center mt-4'>
-      <p>Already have an account?</p>
+      <p>Já tem uma conta?</p>
       <span
         onClick={onToggle}
         className='text-white cursor-pointer hover:underline ml-2'
       >
-        Sign in
+        Entrar
       </span>
     </div>
   );
@@ -84,8 +85,8 @@ const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title='Create an account'
-      actionLabel='Register'
+      title='Crie sua conta'
+      actionLabel='Criar'
       onClose={registerModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}

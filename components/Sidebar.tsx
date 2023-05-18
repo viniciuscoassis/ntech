@@ -7,11 +7,15 @@ import { FaCity } from 'react-icons/fa';
 import { MdOutlineSecurity } from 'react-icons/md';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import { IoMdKey } from 'react-icons/io';
+import {BiLogOut} from 'react-icons/bi'
 import { AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import SidebarFooter from './SIdebarFooter';
 import { useState } from 'react';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Sidebar = () => {
+  const router = useRouter()
   const items = [
     {
       label: 'Dashboard',
@@ -86,6 +90,11 @@ const Sidebar = () => {
       href: '/client/licencas',
       icon: IoMdKey,
     },
+    {
+      label: 'Sair',
+      icon: BiLogOut,
+      onClick: () => {signOut(); router.push('/')},
+    },
   ];
   const [open, setOpen] = useState(false);
   return (
@@ -112,6 +121,7 @@ const Sidebar = () => {
               href={item.href}
               icon={item.icon}
               open={open}
+              onClick={item.onClick}
             />
           ))}
         </div>

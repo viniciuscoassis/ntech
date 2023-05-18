@@ -52,22 +52,23 @@ const LoginModal = () => {
           disabled={isLoading}
         />
         <Input
-          placeholder='Password'
+          placeholder='senha'
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           disabled={isLoading}
+          type="password"
         />
       </div>
     );
 
       const footerContent = (
         <div className='text-neutral-400 text-center mt-4'>
-          <p>First time? </p>
+          <p>Primeira vez no n-gate? </p>
           <span
             onClick={onToggle}
             className='text-white cursor-pointer hover:underline'
           >
-            Create an account
+            Criar uma conta
           </span>
         </div>
       );
@@ -76,8 +77,8 @@ const LoginModal = () => {
     <Modal
         disabled={isLoading}
         isOpen={loginModal.isOpen}
-        title="Login"
-        actionLabel="Sign in"
+        title="Entrar em sua conta"
+        actionLabel="Entrar"
         onClose={loginModal.onClose}
         onSubmit={onSubmit}
         body={bodyContent}
