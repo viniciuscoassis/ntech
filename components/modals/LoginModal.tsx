@@ -5,7 +5,7 @@ import Input from "../Input";
 import Modal from "../Modal";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import { toast } from "react-hot-toast";
-import { signIn } from "next-auth/react";
+import { SignInResponse, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const LoginModal = () => {
@@ -27,20 +27,22 @@ const LoginModal = () => {
     }, [isLoading, registerModal, loginModal]);
 
 
-    const onSubmit = useCallback(async () => {
-      try {
+    const onSubmit = useCallback( () => {
+    
         setIsLoading(true);
-
-        await signIn('credentials', { email, password });
-        toast.success('Logado com sucesso.');
+        const values = {email, password};
+        signIn('credentials', { ...values, redirect: false })
+        .then((res)=>{
+          console.log(res);
+          if(!res?.error){
         loginModal.onClose();
         router.push('/client');
-      } catch (err) {
-        toast.error('Algo deu errado.');
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
+         toast.success('Logado com sucesso.');
+          } else {
+            toast.error('Credenciais inválidas');
+          }
+        })
+        .finally(()=> {setIsLoading(false)})
     }, [loginModal, email, password]);
 
     const bodyContent = (
