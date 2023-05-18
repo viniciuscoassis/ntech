@@ -6,11 +6,13 @@ import Modal from "../Modal";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const LoginModal = () => {
 
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
+    const router = useRouter();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +34,7 @@ const LoginModal = () => {
         await signIn('credentials', { email, password });
         toast.success('Logado com sucesso.');
         loginModal.onClose();
+        router.push('/client');
       } catch (err) {
         toast.error('Algo deu errado.');
         console.log(err);

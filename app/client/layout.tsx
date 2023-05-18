@@ -1,4 +1,6 @@
 import Sidebar from "@/components/Sidebar";
+import { useSession } from "next-auth/react";
+import { ReactNode } from "react";
 
 export default function ClientLayout({
   children,
@@ -7,14 +9,15 @@ export default function ClientLayout({
 }) {
   return (
     <div className=' h-screen'>
-      <div className=' container h-full  xl:px-30 max-w-6xl'>
+      <div className=' container h-full xl:px-30 max-w-6xl'>
         <div className='flex  h-full'>
           <Sidebar />
           <div className=' col-span-3 lg:col-span-2 border-x-[-1px] w-screen border-neutral-800'>
-            {children}
+         {children}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
