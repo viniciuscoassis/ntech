@@ -1,6 +1,4 @@
 import Sidebar from "@/components/Sidebar";
-import { useSession } from "next-auth/react";
-import { ReactNode } from "react";
 
 export default function ClientLayout({
   children,
