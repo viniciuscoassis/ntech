@@ -7,10 +7,10 @@ export default function ClientLayout({
 }) {
   return (
     <div className=' h-screen'>
-      <div className='bg-red-300 container h-full xl:px-30'>
-        <div className='bg-red-200 flex w-screen h-full'>
+      <div className='container h-full xl:px-30'>
+        <div className='flex w-screen h-full bg-[#F4F9FD]'>
           <Sidebar />
-          <div className='w-full border-x-[-1px] border-neutral-800'>
+          <div className='w-full border-x-[-1px] border-neutral-800 pl-10 pt-10'>
             {children}
           </div>
         </div>

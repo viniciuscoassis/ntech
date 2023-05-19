@@ -12,7 +12,7 @@ const SidebarLogo: React.FC<Props> = ({ open }) => {
   return (
     <div
       onClick={() => {
-        router.push('/');
+        router.push('/client');
       }}
       className='
      text-white
