@@ -15,17 +15,19 @@ export default function Client() {
   useEffect(() => {
   }, []);
   return (
-    <div className='h-screen flex justify-center items-center bg-gradient-to-r from-primary to-secondary  text-white w-full'>
-      <div className=' mx-auto w-1/2 h-1/3 flex flex-col justify-between items-center'>
-        <h1 className='text-5xl font-bold text-center'>
-          NTECH NETWORK E COMUNICAÇÃO
-        </h1>
-        <p className='text-2xl'>Logue-se para continuar</p>
-        <button
-          className='bg-slate-600 w-80 h-12 rounded hover:scale-110 hover:bg-slate-500 transition-all'
-        >
-          Iniciar
-        </button>
+    <div className='h-screen flex justify-center items-center w-full'>
+      <div className='text-slate-600 mx-auto w-1/2 h-4/6 flex flex-col justify-center mb-20 bg-white rounded-lg shadow-lg items-center lg:w-10/12'>
+        <div className='flex flex-col justify-between items-center h-1/3'>
+          <h1 className=' font-bold text-center text-3xl lg:text-5xl'>
+            N-GATEWAY
+          </h1>
+          <p className='text-1xl lg:text-2xl text-center'>
+            Faça cadastro para geração de script de configuração
+          </p>
+          <button className='bg-slate-600 text-white w-3/6 h-12 rounded hover:scale-110 hover:bg-slate-500 transition-all'>
+            Iniciar
+          </button>
+        </div>
       </div>
     </div>
   );
