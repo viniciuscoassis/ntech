@@ -1,13 +1,14 @@
 interface CardProps {
-    title: string
+    title: string,
+    quantity: number
 }
 
-const Card = ({ title }: CardProps) => {
+const Card = ({ title, quantity }: CardProps) => {
   return (
-    <div className='max-h-[10rem]
+    <div
+      className='max-h-[10rem]
     bg-white
     text-black
-      min-w-[320px] 
       w-80 
       rounded-2xl 
       shadow-lg
@@ -15,10 +16,18 @@ const Card = ({ title }: CardProps) => {
       text-center 
       text-lg 
       flex 
-      flex-col items-center mr-5 box-border max-h-'>
+      flex-col items-center 
+      
+      mr-5 box-border 
+      hover:scale-110
+      hover:cursor-pointer
+      hover:transition-all
+      active:scale-105
+      '
+    >
       <h1 className='mb-10'>{title}</h1>
       <div className=' bg-slate-100 shadow w-8 h-8 rounded-3xl p-10 flex justify-center items-center'>
-        10
+        {quantity}
       </div>
     </div>
   );
