@@ -6,10 +6,10 @@ export default function Dashboard() {
     <>
       <h1 className=' text-5xl font-bold mb-10'>Dashboard</h1>
       <h2 className='text-3xl mb-5'>VPNs</h2>
-      <div className='max-w-7xl overflow-x-auto h-80 p-2 flex mb-5'>
+      <CardSession>
         <Card quantity={10} title='VPNs Ativas' />
         <Card quantity={2} title='VPNs Desconectadas' />
-      </div>
+      </CardSession>
 
       <h2 className='text-3xl mb-5'>Licenças</h2>
       <CardSession>

@@ -15,7 +15,7 @@ export default function Client() {
   useEffect(() => {
   }, []);
   return (
-    <div className='h-screen flex justify-center items-center w-full'>
+    <div className='h-full flex justify-center items-center w-full'>
       <div className='text-slate-600 mx-auto w-1/2 h-4/6 flex flex-col justify-center mb-20 bg-white rounded-lg shadow-lg items-center lg:w-10/12'>
         <div className='flex flex-col justify-between items-center h-1/3'>
           <h1 className=' font-bold text-center text-3xl lg:text-5xl'>
