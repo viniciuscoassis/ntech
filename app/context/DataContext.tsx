@@ -18,7 +18,7 @@ interface DataContextValue {
 
 
 export default function DataContextFunc({ children }: DataContextProps) {
-    const [data,setData] = useState({});
+    const [data,setData] = useState([]);
 
 
   return <DataContext.Provider value={{data, setData}}>{children}</DataContext.Provider>;
