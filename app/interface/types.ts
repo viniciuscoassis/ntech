@@ -13,14 +13,14 @@ export interface servidor {
 }
 
 
-export interface localDataInterface {
+export interface infraDataInterface {
   estados: estado[];
   cidades: cidade[];
   bases: base[];
   servidores: servidor[];
 }
 
-export interface condominios {
+export interface condominio {
     estado: string,
     cidade: string,
     base: string,
@@ -31,5 +31,5 @@ export interface condominios {
 }
 
 export interface data {
-    condominios: condominios[];
+    condominios: condominio[];
 }

@@ -1,12 +1,9 @@
-import { DataContext } from '@/app/context/DataContext';
-import { localDataInterface } from '@/app/interface/types';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 interface AddCardProps {
   children?: React.ReactNode;
   title: string;
-  setLocalData?: React.Dispatch<React.SetStateAction<localDataInterface>>;
-  localData?: localDataInterface;
+
 }
 
 interface AddFormProps {
@@ -14,7 +11,7 @@ interface AddFormProps {
  
 }
 
-const AddCard = ({ title, setLocalData, localData }: AddCardProps) => {
+const AddCard = ({ title }: AddCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState('');
 
