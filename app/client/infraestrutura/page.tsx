@@ -7,6 +7,7 @@ import Card from '@/components/cards/Card';
 import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
 import { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
   estados: [{ name: 'São Paulo' }, { name: 'Minas gerais' }],
@@ -31,7 +32,12 @@ export default function Infraestrutura() {
     console.log(infraData);
   }, []);
 
-  const submit = (field: string) => {
+  const submit = () => {
+    if(citySelected === '' || estadoSelected === '' || baseSelected === '' || servidorSelected === ''){
+      toast.success('Selecione todos os campos antes de prosseguir');
+      return;
+    }
+    console.log(estadoSelected.length);
     setData([
       ...data,
       {
@@ -41,6 +47,10 @@ export default function Infraestrutura() {
         servidor: servidorSelected,
       },
     ]);
+    setCitySelected('');
+    setEstadoSelected('');
+    setBaseSelected('');
+    setServidorSelected('');
     console.log(data);
   };
 
@@ -59,7 +69,7 @@ export default function Infraestrutura() {
         ))}
         <AddCard title='Adicione uma nova cidade' />
       </div>
-      <Button onClick={() => submit('cidade')} label='Confirmar dados' />
+      <Button onClick={submit} label='Confirmar dados' />
     </>
   );
 }

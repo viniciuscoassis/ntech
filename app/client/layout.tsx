@@ -1,10 +1,20 @@
+'use client'
 import Sidebar from "@/components/Sidebar";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+    const router = useRouter();
+    const session = useSession({
+      required: true,
+      onUnauthenticated() {
+        router.push('/');
+      },
+    });
   return (
     <div className=' h-screen'>
       <div className='container h-full xl:px-30'>

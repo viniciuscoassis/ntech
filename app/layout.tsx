@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import AuthContext from './context/AuthContext';
 import DataContextFunc from './context/DataContext';
 import './globals.css'
@@ -8,6 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <Toaster />
       <DataContextFunc>
         {' '}
         <AuthContext>

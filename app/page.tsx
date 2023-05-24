@@ -5,7 +5,6 @@ import useRegisterModal from '@/hooks/useRegisterModal';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   const registerModal = useRegisterModal();
@@ -21,7 +20,6 @@ export default function Home() {
 
   return (
     <>
-    <Toaster />
         <RegisterModal />
         <LoginModal />
       <div className='h-screen flex justify-center items-center bg-gradient-to-r from-primary to-secondary  text-white w-full'>

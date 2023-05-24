@@ -5,12 +5,7 @@ import { useEffect } from "react";
 
 export default function Client() {
   const router = useRouter();
-  const session = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/');
-    },
-  });
+
 
   useEffect(() => {
   }, []);
