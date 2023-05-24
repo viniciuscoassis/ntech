@@ -20,8 +20,6 @@ const mock: infraDataInterface = {
 export default function Infraestrutura() {
   const { data, setData } = useContext(DataContext);
   const [infraData, setInfraData] = useState(mock);
-  
-  const [condominio, setCondominio] = useState({});
 
   const [citySelected, setCitySelected] = useState('');
   const [estadoSelected, setEstadoSelected] = useState('');
@@ -34,13 +32,16 @@ export default function Infraestrutura() {
   }, []);
 
   const submit = (field: string) => {
-    setCondominio({
-      cidade: citySelected,
-      estado: estadoSelected,
-      base: baseSelected,
-      servidor: servidorSelected,
-    });
-    console.log(condominio);
+    setData([
+      ...data,
+      {
+        cidade: citySelected,
+        estado: estadoSelected,
+        base: baseSelected,
+        servidor: servidorSelected,
+      },
+    ]);
+    console.log(data);
   };
 
   return (
