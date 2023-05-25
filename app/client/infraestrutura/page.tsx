@@ -25,19 +25,17 @@ export default function Infraestrutura() {
   const [citySelected, setCitySelected] = useState('');
   const [estadoSelected, setEstadoSelected] = useState('');
   const [baseSelected, setBaseSelected] = useState('');
-  const [servidorSelected, setServidorSelected] = useState('');
+  const [servidorSelected, setServidorSelected] = useState({name: '', ip: ''});
 
   useEffect(() => {
     setInfraData({ ...mock });
-    console.log(infraData);
   }, []);
 
   const submit = () => {
-    if(citySelected === '' || estadoSelected === '' || baseSelected === '' || servidorSelected === ''){
-      toast.success('Selecione todos os campos antes de prosseguir');
+    if(citySelected === '' || estadoSelected === '' || baseSelected === '' || servidorSelected.name === ''){
+      toast.error('Selecione todos os campos antes de prosseguir');
       return;
     }
-    console.log(estadoSelected.length);
     setData([
       ...data,
       {
@@ -50,8 +48,7 @@ export default function Infraestrutura() {
     setCitySelected('');
     setEstadoSelected('');
     setBaseSelected('');
-    setServidorSelected('');
-    console.log(data);
+    setServidorSelected({ name: '', ip: '' });
   };
 
   return (
@@ -67,7 +64,7 @@ export default function Infraestrutura() {
             setCitySelected={setCitySelected}
           />
         ))}
-        <AddCard title='Adicione uma nova cidade' />
+        <AddCard title='Adicione uma nova cidade' setInfraData={setInfraData} infraData={infraData}/>
       </div>
       <Button onClick={submit} label='Confirmar dados' />
     </>

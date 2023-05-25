@@ -9,11 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <Toaster />
       <DataContextFunc>
-        {' '}
         <AuthContext>
-          <body suppressHydrationWarning={true}>{children}</body>
+          <body suppressHydrationWarning={true}>
+            <Toaster />
+            {children}
+          </body>
         </AuthContext>
       </DataContextFunc>
     </html>

@@ -1,9 +1,11 @@
+import { infraDataInterface } from '@/app/interface/types';
 import { useState } from 'react';
 
 interface AddCardProps {
   children?: React.ReactNode;
   title: string;
-
+  setInfraData: React.Dispatch<React.SetStateAction<infraDataInterface>>;
+  infraData: infraDataInterface;
 }
 
 interface AddFormProps {
@@ -11,11 +13,17 @@ interface AddFormProps {
  
 }
 
-const AddCard = ({ title }: AddCardProps) => {
+const AddCard = ({ title, infraData, setInfraData }: AddCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState('');
 
   const submit = () => {
+    infraData.cidades.push({name: value});
+    setInfraData({...infraData});
+    // setInfraData({
+    //   ...infraData,
+    //   cidades: [infraData.cidades.push({ name: 'Poços de Caldas' })],
+    // });
   };
 
   const AddForm = ({ title }: AddFormProps) => {
