@@ -1,13 +1,11 @@
+import Button from "@/components/Button";
+import { FaCity } from "react-icons/fa";
+
 export default function Condominios(){
     return (
       <>
-        <h1 className=' text-3xl text-white'>Teste</h1>
-        <p className="text-white">
-          lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum
-          lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-          ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-          lorem ipsum lorem ipsum
-        </p>
+        <h1 className=' text-5xl font-bold mb-10'>Condomínios</h1>
+     
       </>
     );
 }
