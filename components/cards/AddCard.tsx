@@ -8,48 +8,14 @@ interface AddCardProps {
   infraData: infraDataInterface;
 }
 
-interface AddFormProps {
-  title: string,
- 
-}
-
 const AddCard = ({ title, infraData, setInfraData }: AddCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState('');
 
   const submit = () => {
-    infraData.cidades.push({name: value});
-    setInfraData({...infraData});
-    // setInfraData({
-    //   ...infraData,
-    //   cidades: [infraData.cidades.push({ name: 'Poços de Caldas' })],
-    // });
-  };
-
-  const AddForm = ({ title }: AddFormProps) => {
-    return (
-      <div className='flex flex-col'>
-        <div
-          className='text-end cursor-pointer'
-          onClick={() => {
-            setIsSelected(false);
-          }}
-        >
-          X
-        </div>
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder={title}
-        ></input>
-        <button
-          onClick={submit}
-          className='bg-sky-950 cursor-pointer text-white'
-        >
-          adicionar
-        </button>
-      </div>
-    );
+    infraData.cidades.push({ name: value });
+    setInfraData({ ...infraData });
+    setValue('');
   };
 
   return (
@@ -67,7 +33,31 @@ const AddCard = ({ title, infraData, setInfraData }: AddCardProps) => {
     cursor-pointer'
       onClick={() => (isSelected ? '' : setIsSelected(true))}
     >
-      {isSelected ? <AddForm title={title} /> : title}
+      {isSelected ? (
+        <div className='flex flex-col'>
+          <div
+            className='text-end cursor-pointer'
+            onClick={() => {
+              setIsSelected(false);
+            }}
+          >
+            X
+          </div>
+          <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder={title}
+          ></input>
+          <button
+            onClick={submit}
+            className='bg-sky-950 cursor-pointer text-white'
+          >
+            adicionar
+          </button>
+        </div>
+      ) : (
+        title
+      )}
     </div>
   );
 };
