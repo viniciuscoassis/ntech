@@ -6,7 +6,7 @@ const Condominio = (body : condominio) => {
     return (
       <>
         {' '}
-        <div className='bg-white shadow-lg p-10 rounded-lg w-96 h-96 flex flex-col justify-between items-center '>
+        <div className='bg-white shadow-lg p-10 mr-5 mb-5 rounded-lg w-96 h-96 flex flex-col justify-between items-center '>
           <FaCity size={60} color='#082F49' />
           <div className=' w-full flex flex-col items-center'>
             <div className='w-full flex justify-between'>

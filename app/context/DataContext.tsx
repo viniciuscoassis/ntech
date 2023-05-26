@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, createContext } from 'react';
+import { condominio, data } from '../interface/types';
 
 interface DataContextProps {
   children: React.ReactNode;
@@ -9,6 +10,11 @@ interface DataContextProps {
 interface DataContextValue {
   data: any;
   setData: React.Dispatch<React.SetStateAction<any>>
+}
+
+export interface DataContextType {
+  data: condominio[];
+  setData: React.Dispatch<React.SetStateAction<data>>;
 }
 
    export const DataContext = createContext<DataContextValue>({
