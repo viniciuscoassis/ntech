@@ -1,11 +1,12 @@
 'use client';
 import DataContextFunc, { DataContext } from '@/app/context/DataContext';
-import { infraDataInterface } from '@/app/interface/types';
+import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
 import AddCard from '@/components/cards/AddCard';
 import Card from '@/components/cards/Card';
 import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
+import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
@@ -19,16 +20,20 @@ const mock: infraDataInterface = {
   ],
 };
 export default function Infraestrutura() {
+  
+  const router = useRouter();
+
   const { data, setData } = useContext(DataContext);
   const [infraData, setInfraData] = useState(mock);
 
   const [citySelected, setCitySelected] = useState('');
   const [estadoSelected, setEstadoSelected] = useState('');
   const [baseSelected, setBaseSelected] = useState('');
-  const [servidorSelected, setServidorSelected] = useState({name: '', ip: ''});
+  const [servidorSelected, setServidorSelected] = useState<servidor>({name: '', ip: ''});
 
   useEffect(() => {
     setInfraData({ ...mock });
+    console.log(data);
   }, []);
 
   const submit = () => {
@@ -49,6 +54,8 @@ export default function Infraestrutura() {
     setEstadoSelected('');
     setBaseSelected('');
     setServidorSelected({ name: '', ip: '' });
+
+    router.push('/client/condominios');
   };
 
   return (
@@ -61,11 +68,68 @@ export default function Infraestrutura() {
             key={index}
             title={value.name}
             selected={value.name === citySelected}
-            setCitySelected={setCitySelected}
+            setSingleSeleted={setCitySelected}
           />
         ))}
-        <AddCard title='Adicione uma nova cidade' setInfraData={setInfraData} infraData={infraData}/>
+        <AddCard
+          title='Adicione uma nova cidade'
+          setInfraData={setInfraData}
+          infraData={infraData}
+          typeSubmit='cidade'
+        />
       </div>
+      <h2 className='text-3xl mb-5'>Estados</h2>
+      <div className='flex items-center h-32 w-10/12 max-w-screen-lg overflow-x-auto'>
+        {infraData?.estados.map((value, index) => (
+          <InfoCard
+            key={index}
+            title={value.name}
+            selected={value.name === estadoSelected}
+            setSingleSeleted={setEstadoSelected}
+          />
+        ))}
+        <AddCard
+          title='Adicione um novo estado'
+          setInfraData={setInfraData}
+          infraData={infraData}
+          typeSubmit='estado'
+        />
+      </div>
+      <h2 className='text-3xl mb-5'>Bases de monitoramento</h2>
+      <div className='flex items-center h-32 w-10/12 max-w-screen-lg overflow-x-auto'>
+        {infraData?.bases.map((value, index) => (
+          <InfoCard
+            key={index}
+            title={value.name}
+            selected={value.name === baseSelected}
+            setSingleSeleted={setBaseSelected}
+          />
+        ))}
+        <AddCard
+          title='Adicione uma nova base de monitorament'
+          setInfraData={setInfraData}
+          infraData={infraData}
+          typeSubmit='base'
+        />
+      </div>
+      <h2 className='text-3xl mb-5'>Servidores</h2>
+      <div className='flex items-center h-44 w-10/12 max-w-screen-lg overflow-x-auto'>
+        {infraData?.servidores.map((value, index) => (
+          <InfoCard
+            key={index}
+            title={value.name}
+            selected={value.name === servidorSelected.name}
+            setObjectSelected={setServidorSelected}
+          >{value.ip}</InfoCard>
+        ))}
+        <AddCard
+          title='Adicione um novo servidor'
+          setInfraData={setInfraData}
+          infraData={infraData}
+          typeSubmit='servidor'
+        />
+      </div>
+
       <Button onClick={submit} label='Confirmar dados' />
     </>
   );

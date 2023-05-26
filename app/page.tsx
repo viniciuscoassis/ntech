@@ -16,7 +16,7 @@ export default function Home() {
 
     }
     console.log(session);
-  }, [session?.status])
+  }, [session.status])
 
   return (
     <>

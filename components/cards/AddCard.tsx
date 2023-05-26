@@ -6,14 +6,36 @@ interface AddCardProps {
   title: string;
   setInfraData: React.Dispatch<React.SetStateAction<infraDataInterface>>;
   infraData: infraDataInterface;
+  typeSubmit: string;
 }
 
-const AddCard = ({ title, infraData, setInfraData }: AddCardProps) => {
+const AddCard = ({
+  title,
+  infraData,
+  setInfraData,
+  typeSubmit,
+}: AddCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState('');
 
   const submit = () => {
-    infraData.cidades.push({ name: value });
+    switch (typeSubmit) {
+      case 'cidade':
+        infraData.cidades.push({ name: value });
+        break;
+      case 'estado':
+        infraData.estados.push({ name: value });
+        break;
+
+      case 'base':
+        infraData.bases.push({ name: value });
+        break;
+
+      case 'servidor':
+        infraData.servidores.push({ name: value, ip: '123321' });
+        break;
+    }
+
     setInfraData({ ...infraData });
     setValue('');
   };
