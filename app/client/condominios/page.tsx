@@ -36,48 +36,7 @@ export default function Condominios() {
             />
           </div>
         )}
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />{' '}
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />{' '}
-        <Condominio
-          cidade='Poços de caldas'
-          estado={'Minas gerais'}
-          base={'base 1'}
-          servidor={{ name: 'base 1', ip: '12332132112' }}
-        />
+   
       </div>
     </>
   );
