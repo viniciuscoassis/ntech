@@ -17,6 +17,7 @@ const AddCard = ({
 }: AddCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const [value, setValue] = useState('');
+  const [value2, setValue2] = useState('');
 
   const submit = () => {
     switch (typeSubmit) {
@@ -32,7 +33,7 @@ const AddCard = ({
         break;
 
       case 'servidor':
-        infraData.servidores.push({ name: value, ip: '123321' });
+        infraData.servidores.push({ name: value, ip: value2 });
         break;
     }
 
@@ -70,6 +71,15 @@ const AddCard = ({
             onChange={(e) => setValue(e.target.value)}
             placeholder={title}
           ></input>
+          {typeSubmit == 'servidor' ? (
+            <input
+              value={value2}
+              onChange={(e) => setValue2(e.target.value)}
+              placeholder={'Adicionar Ip do servidor'}
+            />
+          ) : (
+            ''
+          )}
           <button
             onClick={submit}
             className='bg-sky-950 cursor-pointer text-white'
