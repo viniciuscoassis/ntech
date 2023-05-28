@@ -1,5 +1,7 @@
+import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface } from '@/app/interface/types';
-import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useContext, useState } from 'react';
 
 interface AddCardProps {
   children?: React.ReactNode;
@@ -19,21 +21,30 @@ const AddCard = ({
   const [value, setValue] = useState('');
   const [value2, setValue2] = useState('');
 
+const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
+ const session = useSession();
+
   const submit = () => {
     switch (typeSubmit) {
       case 'cidade':
         infraData.cidades.push({ name: value });
+        setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou uma nova cidade'}]); 
         break;
       case 'estado':
         infraData.estados.push({ name: value });
+        setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo estado'}]); 
         break;
 
       case 'base':
         infraData.bases.push({ name: value });
+        setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou uma nova base'}]); 
+
         break;
 
       case 'servidor':
         infraData.servidores.push({ name: value, ip: value2 });
+        setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo servidor'}]); 
+
         break;
     }
 

@@ -1,9 +1,11 @@
 'use client';
 import { DataContext } from '@/app/context/DataContext';
+import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
 import AddCard from '@/components/cards/AddCard';
 import InfoCard from '@/components/cards/InfoCard';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -22,6 +24,9 @@ export default function Infraestrutura() {
   const router = useRouter();
 
   const { data, setData } = useContext(DataContext);
+  const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
+ const session = useSession();
+
   const [infraData, setInfraData] = useState(mock);
 
   const [citySelected, setCitySelected] = useState('');
@@ -31,7 +36,7 @@ export default function Infraestrutura() {
 
   useEffect(() => {
     setInfraData({ ...mock });
-    console.log(infraData);
+    console.log(session);
   }, []);
 
   const submit = () => {
@@ -49,6 +54,7 @@ export default function Infraestrutura() {
         servidor: servidorSelected,
       },
     ]);
+    setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio'}]); 
     setCitySelected('');
     setEstadoSelected('');
     setBaseSelected('');

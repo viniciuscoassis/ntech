@@ -1,14 +1,11 @@
-interface RelatorioProps {
-    name: string,
-    date: string,
-    hour: string,
-    message: string
-}
+import { Relatorio } from "@/app/context/RelatorioContext";
 
-const Relatorio = ({name, date, hour, message} : RelatorioProps) => {
+
+
+const Relatorio = ({name, date, message} : Relatorio) => {
     return  <div className="h-24 border-b-2 flex justify-between items-center p-10">
             <div>{name}</div>
-            <div><div className="font-bold">{date}</div><div>{hour}</div></div>
+            <div><div className="font-bold">{date.toString()}</div><div>19:19</div></div>
             <div className="max-w-xs">{message}</div>
           </div>
 }

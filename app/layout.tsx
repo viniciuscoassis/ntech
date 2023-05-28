@@ -2,6 +2,7 @@ import { Toaster } from 'react-hot-toast';
 import AuthContext from './context/AuthContext';
 import DataContextFunc from './context/DataContext';
 import './globals.css'
+import RelatorioContextFunc from './context/RelatorioContext';
 export default function RootLayout({
   children,
 }: {
@@ -10,12 +11,14 @@ export default function RootLayout({
   return (
     <html>
       <DataContextFunc>
+        <RelatorioContextFunc>
         <AuthContext>
           <body suppressHydrationWarning={true}>
             <Toaster />
             {children}
           </body>
         </AuthContext>
+        </RelatorioContextFunc>
       </DataContextFunc>
     </html>
   );
