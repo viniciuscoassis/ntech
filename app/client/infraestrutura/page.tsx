@@ -1,10 +1,8 @@
 'use client';
-import DataContextFunc, { DataContext } from '@/app/context/DataContext';
+import { DataContext } from '@/app/context/DataContext';
 import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
 import AddCard from '@/components/cards/AddCard';
-import Card from '@/components/cards/Card';
-import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
@@ -33,7 +31,7 @@ export default function Infraestrutura() {
 
   useEffect(() => {
     setInfraData({ ...mock });
-    console.log(data);
+    console.log(infraData);
   }, []);
 
   const submit = () => {
@@ -41,6 +39,7 @@ export default function Infraestrutura() {
       toast.error('Selecione todos os campos antes de prosseguir');
       return;
     }
+    console.log(servidorSelected);
     setData([
       ...data,
       {
@@ -120,6 +119,7 @@ export default function Infraestrutura() {
             title={value.name}
             selected={value.name === servidorSelected.name}
             setObjectSelected={setServidorSelected}
+            aditionalData={value.ip}
           >{value.ip}</InfoCard>
         ))}
         <AddCard

@@ -7,6 +7,7 @@ interface InfoCardProps {
   selected: boolean;
   setSingleSeleted?: React.Dispatch<React.SetStateAction<string>>
   setObjectSelected?: React.Dispatch<React.SetStateAction<servidor>>
+  aditionalData?: string
 }
 
 const InfoCard = ({
@@ -15,6 +16,7 @@ const InfoCard = ({
   selected,
   setSingleSeleted,
   setObjectSelected,
+  aditionalData
 }: InfoCardProps) => {
   return (
     <div
@@ -40,7 +42,7 @@ const InfoCard = ({
         if (setSingleSeleted) {
           setSingleSeleted(title);
         } else if (setObjectSelected) {
-          setObjectSelected({ name: title, ip: '123321' });
+          setObjectSelected({ name: title, ip: aditionalData || '' });
         }
       }}
     >
