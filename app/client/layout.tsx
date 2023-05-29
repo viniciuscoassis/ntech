@@ -20,7 +20,7 @@ export default function ClientLayout({
       <div className='container h-full xl:px-30'>
         <div className='flex w-screen h-full bg-[#F4F9FD]'>
           <Sidebar />
-          <div className='w-full border-x-[-1px] border-neutral-800 p-10 max-h-max overflow-auto'>
+          <div className='w-full border-x-[-1px] border-neutral-800 p-5 lg:p-10 max-h-max overflow-auto'>
             {children}
           </div>
         </div>

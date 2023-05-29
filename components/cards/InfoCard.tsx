@@ -22,21 +22,24 @@ const InfoCard = ({
     <div
       className={`bg-white
     text-black
-      w-80
+    min-w-[10rem]
+      lg:min-w-[20rem]
+      lg:w-80
       h-5/6
-      min-w-[20rem]
       rounded-2xl 
       shadow-lg
-      p-8 
+      p-4
+      lg:p-8 
       text-center 
-      text-lg 
+      text-sm
+      lg:text-lg 
       flex 
       flex-col items-center 
       mr-5 box-border 
-      hover:scale-105
+      lg:hover:scale-105
       hover:cursor-pointer
       hover:transition-all
-      ${selected ? 'border-8 border-sky-950' : ''}
+      ${selected ? 'border-4 lg:border-8 border-sky-950' : ''}
       `}
       onClick={() => {
         if (setSingleSeleted) {
@@ -47,10 +50,10 @@ const InfoCard = ({
       }}
     >
       <h1 className=''>{title} </h1>
-      <div className='w-52'>
+      <div className='lg:w-52'>
         {children ? (
           <div className='flex justify-between w-full border-t-4 h-full'>
-            <div>ip :</div>
+            <div className="hidden lg:block">ip :</div>
             <div>{children}</div>
           </div>
         ) : (

@@ -11,12 +11,11 @@ import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
-  estados: [{ name: 'São Paulo' }, { name: 'Minas gerais' }],
-  cidades: [{ name: 'Poços de Caldas' }, { name: 'Limeira' }],
-  bases: [{ name: 'Base 1' }, { name: 'Base 2' }],
+  estados: [],
+  cidades: [],
+  bases: [],
   servidores: [
-    { name: 'Servidor 1', ip: '123321' },
-    { name: 'Servidor 2', ip: '123322' },
+    
   ],
 };
 export default function Infraestrutura() {
@@ -65,9 +64,9 @@ export default function Infraestrutura() {
 
   return (
     <>
-      <h1 className=' text-5xl font-bold mb-10'>Infraestrutura</h1>
-      <h2 className='text-3xl mb-5'>Cidade</h2>
-      <div className='flex items-center h-32 w-10/12 max-w-screen-lg overflow-x-auto'>
+      <h1 className=' text-2xl lg:text-5xl font-bold mb-10'>Infraestrutura</h1>
+      <h2 className='text-xl lg:text-3xl mb-5'>Cidade</h2>
+      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
         {infraData?.cidades.map((value, index) => (
           <InfoCard
             key={index}
@@ -77,14 +76,14 @@ export default function Infraestrutura() {
           />
         ))}
         <AddCard
-          title='Adicione uma nova cidade'
+          title='Adicione uma cidade'
           setInfraData={setInfraData}
           infraData={infraData}
           typeSubmit='cidade'
         />
       </div>
-      <h2 className='text-3xl mb-5'>Estados</h2>
-      <div className='flex items-center h-32 w-10/12 max-w-screen-lg overflow-x-auto'>
+      <h2 className='text-xl lg:text-3xl mb-5'>Estados</h2>
+      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
         {infraData?.estados.map((value, index) => (
           <InfoCard
             key={index}
@@ -94,14 +93,14 @@ export default function Infraestrutura() {
           />
         ))}
         <AddCard
-          title='Adicione um novo estado'
+          title='Adicione um estado'
           setInfraData={setInfraData}
           infraData={infraData}
           typeSubmit='estado'
         />
       </div>
-      <h2 className='text-3xl mb-5'>Bases de monitoramento</h2>
-      <div className='flex items-center h-32 w-10/12 max-w-screen-lg overflow-x-auto'>
+      <h2 className='text-xl lg:text-3xl mb-5'>Bases de monitoramento</h2>
+      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
         {infraData?.bases.map((value, index) => (
           <InfoCard
             key={index}
@@ -111,14 +110,14 @@ export default function Infraestrutura() {
           />
         ))}
         <AddCard
-          title='Adicione uma nova base de monitorament'
+          title='Adicione uma base de monitoramento'
           setInfraData={setInfraData}
           infraData={infraData}
           typeSubmit='base'
         />
       </div>
-      <h2 className='text-3xl mb-5'>Servidores</h2>
-      <div className='flex items-center h-44 w-10/12 max-w-screen-lg overflow-x-auto'>
+      <h2 className='text-xl lg:text-3xl mb-5'>Servidores</h2>
+      <div className='flex items-center h-44 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
         {infraData?.servidores.map((value, index) => (
           <InfoCard
             key={index}
@@ -129,7 +128,7 @@ export default function Infraestrutura() {
           >{value.ip}</InfoCard>
         ))}
         <AddCard
-          title='Adicione um novo servidor'
+          title='Adicione um servidor'
           setInfraData={setInfraData}
           infraData={infraData}
           typeSubmit='servidor'

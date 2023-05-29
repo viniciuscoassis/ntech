@@ -55,8 +55,12 @@ const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
   return (
     <div
       className='
-      min-w-[20rem] 
+       w-40
+      lg:w-80
       h-5/6 
+      text-sm
+      lg:text-lg
+      text-center
       rounded-2xl 
       border-4 
       border-dashed 
@@ -68,9 +72,9 @@ const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
       onClick={() => (isSelected ? '' : setIsSelected(true))}
     >
       {isSelected ? (
-        <div className='flex flex-col'>
+        <div className='flex flex-col w-3/4 text-xs '>
           <div
-            className='text-end cursor-pointer'
+            className='text-end cursor-pointer '
             onClick={() => {
               setIsSelected(false);
             }}
@@ -81,6 +85,7 @@ const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder={title}
+            className=' border-2 h-10'
           ></input>
           {typeSubmit == 'servidor' ? (
             <input
