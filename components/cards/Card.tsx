@@ -9,12 +9,13 @@ const Card = ({ title, quantity }: CardProps) => {
       className='max-h-[10rem]
     bg-white
     text-black
-      w-80 
+    w-32  
+    lg:w-80 
       rounded-2xl 
       shadow-lg
       p-8 
       text-center 
-      text-lg 
+      lg:text-lg 
       flex 
       flex-col items-center 
       
