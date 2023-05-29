@@ -23,11 +23,7 @@ export interface infraDataInterface {
 export interface condominio {
     estado: string,
     cidade: string,
-    base: string,
-    servidor: {
-        name: string,
-        ip: string
-    }
+    base: string
 }
 
 export interface data {

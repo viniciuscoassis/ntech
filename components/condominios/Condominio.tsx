@@ -18,12 +18,6 @@ const Condominio = (body : condominio) => {
             <div className='w-full flex justify-between'>
               <div className=''>Base</div> <div>{body.base}</div>
             </div>{' '}
-            <div className='w-full flex justify-between'>
-              <div className=''>Servidor</div> <div>{body.servidor.name}</div>
-            </div>
-            <div className='w-full flex justify-between'>
-              <div className=''>Ip</div> <div>{body.servidor.ip}</div>
-            </div>
           </div>
           <Button label={'Gerar script'} />
         </div>

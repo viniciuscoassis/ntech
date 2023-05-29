@@ -23,7 +23,6 @@ export default function Condominios() {
               cidade={value.cidade}
               estado={value.estado}
               base={value.base}
-              servidor={value.servidor}
               key={index}
             />
           ))

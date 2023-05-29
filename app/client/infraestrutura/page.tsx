@@ -116,7 +116,8 @@ export default function Infraestrutura() {
           typeSubmit='base'
         />
       </div>
-      <h2 className='text-xl lg:text-3xl mb-5'>Servidores</h2>
+      <Button onClick={submit} label='Confirmar dados' />
+      <h2 className='text-xl lg:text-3xl mb-5 mt-10'>Servidores</h2>
       <div className='flex items-center h-44 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
         {infraData?.servidores.map((value, index) => (
           <InfoCard
@@ -135,7 +136,7 @@ export default function Infraestrutura() {
         />
       </div>
 
-      <Button onClick={submit} label='Confirmar dados' />
+      
     </>
   );
 }
