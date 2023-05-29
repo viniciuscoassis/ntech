@@ -11,8 +11,8 @@ import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
-  estados: [],
-  cidades: [],
+  estados: [{name: 'Minas Gerais'}, {name: 'São Paulo'}],
+  cidades: [{name: '16 - Limeira'}, {name: '17 - Ribeirão Preto'}, {name: '18 - Piracicaba'}, {name: '19 - Campinas'}, {name: '20 - Leme'}, {name: '21 - Rio Claro'}, {name: '22 - Americana'}, {name: '23 - Araras'} ],
   bases: [],
   servidores: [
     
@@ -39,11 +39,10 @@ export default function Infraestrutura() {
   }, []);
 
   const submit = () => {
-    if(citySelected === '' || estadoSelected === '' || baseSelected === '' || servidorSelected.name === ''){
+    if(citySelected === '' || estadoSelected === '' || baseSelected === ''){
       toast.error('Selecione todos os campos antes de prosseguir');
       return;
     }
-    console.log(servidorSelected);
     setData([
       ...data,
       {

@@ -1,8 +1,10 @@
 import { FaCity } from "react-icons/fa";
 import Button from "../Button";
 import { condominio } from "@/app/interface/types";
+import useAccountModal from "@/hooks/useAccountModal";
 
 const Condominio = (body : condominio) => {
+  const accountModal = useAccountModal();
     return (
       <>
         {' '}
@@ -19,7 +21,7 @@ const Condominio = (body : condominio) => {
               <div className=''>Base</div> <div>{body.base}</div>
             </div>{' '}
           </div>
-          <Button label={'Gerar script'} />
+          <Button onClick={()=> accountModal.onOpen()} label={'Gerar script'} />
         </div>
       </>
     );

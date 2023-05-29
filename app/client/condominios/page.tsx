@@ -2,6 +2,8 @@
 import { DataContext, DataContextType } from '@/app/context/DataContext';
 import Button from '@/components/Button';
 import Condominio from '@/components/condominios/Condominio';
+import AccountModal from '@/components/modals/AccountModal';
+import ScriptModal from '@/components/modals/ScriptModal';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
 
@@ -15,6 +17,8 @@ export default function Condominios() {
   }, []);
   return (
     <>
+    <ScriptModal/>
+    <AccountModal/>
       <h1 className=' text-5xl font-bold mb-10'>Condomínios</h1>
       <div className='flex flex-wrap'>
         {data.length != 0 ? (
