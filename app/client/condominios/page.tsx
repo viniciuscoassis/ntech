@@ -19,6 +19,15 @@ export default function Condominios() {
     <ScriptModal/>
     <AccountModal/>
       <h1 className=' text-5xl font-bold mb-10'>Condomínios</h1>
+      <div>Configurações base - formato XXX.XXX.XXX.X/XX 
+      <p>(Perguntar ao responsável n-tech)</p></div>
+      <div className='flex flex-col justify-between w-1/4 border mb-5'>
+      <input className='h-2/6 border' placeholder='Ip do servidor de acesso'/>
+      <input className='h-2/6 border' placeholder='Ip do servidor de imagem'/>
+      <input className='h-2/6 border' placeholder='Ip do servidor de voip'/>
+      <button className='bg-primary text-white'>Salvar</button>
+</div>
+
       <div className='flex flex-wrap'>
         {data.length != 0 ? (
           data?.map((value, index) => (

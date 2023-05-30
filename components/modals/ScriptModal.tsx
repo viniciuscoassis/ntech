@@ -25,10 +25,10 @@ const ScriptModal = () => {
 
     const onSubmit = useCallback( () => {
         console.log(script);
-        // setIsLoading(true);
-        // router.back();
-        // setIsLoading(false);
-        // scriptModal.onClose();
+        setIsLoading(true);
+        router.back();
+        setIsLoading(false);
+        scriptModal.onClose();
       
 
     }, [script, isLoading,scriptModal]);
