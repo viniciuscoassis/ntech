@@ -15,7 +15,6 @@ export default function Home() {
       router.push('/client');
 
     }
-    console.log(session);
   }, [session.status])
 
   return (

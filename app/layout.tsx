@@ -3,6 +3,7 @@ import AuthContext from './context/AuthContext';
 import DataContextFunc from './context/DataContext';
 import './globals.css'
 import RelatorioContextFunc from './context/RelatorioContext';
+import { ScriptContext } from './context/Script';
 export default function RootLayout({
   children,
 }: {
@@ -12,6 +13,7 @@ export default function RootLayout({
     <html>
       <DataContextFunc>
         <RelatorioContextFunc>
+         
         <AuthContext>
           <body suppressHydrationWarning={true}>
             <Toaster />

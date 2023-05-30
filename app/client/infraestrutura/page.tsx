@@ -35,7 +35,6 @@ export default function Infraestrutura() {
 
   useEffect(() => {
     setInfraData({ ...mock });
-    console.log(session);
   }, []);
 
   const submit = () => {

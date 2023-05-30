@@ -1,14 +1,17 @@
 'use client'
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Modal from "../Modal";
 import { useRouter } from "next/navigation";
 import useScriptModal from "@/hooks/useScriptModal";
+import { ScriptContext } from "@/app/context/Script";
 
 const ScriptModal = () => {
 
     const scriptModal = useScriptModal();
 
     const router = useRouter();
+
+    const {script, setScript} = useContext(ScriptContext);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -20,16 +23,15 @@ const ScriptModal = () => {
     //   registerModal.onOpen();
     // }, [isLoading, registerModal, loginModal]);
 
-
     const onSubmit = useCallback( () => {
-    
-        setIsLoading(true);
-        router.back();
-        setIsLoading(false);
+        console.log(script);
+        // setIsLoading(true);
+        // router.back();
+        // setIsLoading(false);
+        // scriptModal.onClose();
+      
 
-
-
-    }, []);
+    }, [script, isLoading,scriptModal]);
 
     const bodyContent = (
       <div className='text-white bg-gray-300 flex flex-col gap-4'>

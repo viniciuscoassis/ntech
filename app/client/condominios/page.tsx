@@ -13,7 +13,6 @@ export default function Condominios() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(data);
   }, []);
   return (
     <>

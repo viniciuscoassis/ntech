@@ -2,9 +2,12 @@ import { FaCity } from "react-icons/fa";
 import Button from "../Button";
 import { condominio } from "@/app/interface/types";
 import useAccountModal from "@/hooks/useAccountModal";
+import { useContext } from "react";
+import { ScriptContext } from "@/app/context/Script";
 
 const Condominio = (body : condominio) => {
   const accountModal = useAccountModal();
+  const {script, setScript} = useContext(ScriptContext);
     return (
       <>
         {' '}
@@ -21,7 +24,7 @@ const Condominio = (body : condominio) => {
               <div className=''>Base</div> <div>{body.base}</div>
             </div>{' '}
           </div>
-          <Button onClick={()=> accountModal.onOpen()} label={'Gerar script'} />
+          <Button onClick={()=> {setScript({base: body.base, city: '17'});accountModal.onOpen()}} label={'Gerar script'} />
         </div>
       </>
     );

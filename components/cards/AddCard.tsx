@@ -2,6 +2,7 @@ import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface } from '@/app/interface/types';
 import { useSession } from 'next-auth/react';
 import { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 interface AddCardProps {
   children?: React.ReactNode;
@@ -25,7 +26,12 @@ const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
  const session = useSession();
 
   const submit = () => {
+     if(value === '' ) {
+      toast.error('Insira um valor válido');
+        return
+      }
     switch (typeSubmit) {
+     
       case 'cidade':
         infraData.cidades.push({ name: value });
         setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou uma nova cidade'}]); 
