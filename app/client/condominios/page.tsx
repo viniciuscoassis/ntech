@@ -15,6 +15,7 @@ export default function Condominios() {
   const [ipImagem, setIpImagem] = useState('');
   const [ipVoip, setIpVoip] = useState('');
   const [ipsSalvosStorage, setIpSalvosStorage] = useLocalStorage<ipsSalvos>('ipsFixos', {ipAcesso, ipImagem, ipVoip});
+  const [ipsSalvos, setIpsSalvos] = useState({ipAcesso: "", ipImagem: "", ipVoip: ""});
 
   interface ipsSalvos {
     ipAcesso: string;
@@ -30,11 +31,13 @@ export default function Condominios() {
       return;
     }
     setIpSalvosStorage({ ...ipsSalvosStorage, ipAcesso, ipImagem, ipVoip });
+    setIpsSalvos({ ...ipsSalvos, ipAcesso, ipImagem, ipVoip });
     toast.success('Ips salvos');
   }
 
   useEffect(() => {
-    console.log(ipsSalvosStorage);
+    setIpsSalvos({...ipsSalvosStorage});
+    
   }, []);
   return (
     <>
@@ -50,11 +53,12 @@ export default function Condominios() {
           <input className='h-2/6 border' placeholder='Ip do servidor de voip' value={ipVoip} onChange={(e) => setIpVoip(e.target.value)} />
           <button onClick={submit} className='bg-primary text-white'>Salvar</button>
         </div>
-        {ipsSalvosStorage? 
+     
+        {ipsSalvos.ipAcesso != ''? 
           <div className='flex flex-col justify-between w-1/4 border mb-5 bg-white'>
-            <div className='h-2/6 border' placeholder='Ip do servidor de acesso'>{ipsSalvosStorage.ipAcesso}</div>
-            <div className='h-2/6 border' placeholder='Ip do servidor de imagem'></div>
-            <div className='h-2/6 border' placeholder='Ip do servidor de voip'></div>
+            <div className='h-2/6 border' placeholder='Ip do servidor de acesso'>{ipsSalvos.ipAcesso}</div>
+            <div className='h-2/6 border' placeholder='Ip do servidor de imagem'>{ipsSalvos.ipImagem}</div>
+            <div className='h-2/6 border' placeholder='Ip do servidor de voip'>{ipsSalvos.ipVoip}</div>
             <div className=' text-primary text-center border-0'>Ips Salvos</div>
 
           </div> : ''}
