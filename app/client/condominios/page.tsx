@@ -38,7 +38,7 @@ export default function Condominios() {
   useEffect(() => {
     setIpsSalvos({...ipsSalvosStorage});
     
-  }, []);
+  }, [ipsSalvosStorage]);
   return (
     <>
       <ScriptModal />

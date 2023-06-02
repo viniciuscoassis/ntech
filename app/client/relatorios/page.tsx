@@ -6,10 +6,6 @@ import { Key, useContext, useEffect } from "react";
 export default function Relatorios(){
   const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
 
-  useEffect(()=> {
-    console.log(relatorio);
-  }, [])
-
     return (
       <>
         <h1 className=' text-5xl font-bold mb-10'>Relatórios</h1>
