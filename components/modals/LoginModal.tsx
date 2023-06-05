@@ -65,13 +65,13 @@ const LoginModal = () => {
 
       const footerContent = (
         <div className='text-neutral-400 text-center mt-4'>
-          <p>Primeira vez no n-gate? </p>
+          {/* <p>Primeira vez no n-gateway? </p>
           <span
             onClick={onToggle}
             className='text-white cursor-pointer hover:underline'
           >
             Criar uma conta
-          </span>
+          </span> */}
         </div>
       );
 
