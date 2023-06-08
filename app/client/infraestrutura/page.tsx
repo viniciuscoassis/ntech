@@ -3,13 +3,15 @@ import { DataContext } from '@/app/context/DataContext';
 import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
+import Input from '@/components/Input';
+import Modal from '@/components/Modal';
 import AddCard from '@/components/cards/AddCard';
 import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
 import ServersContainers from '@/components/servidores/ServersContainer';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
@@ -36,6 +38,11 @@ export default function Infraestrutura() {
   const [baseSelected, setBaseSelected] = useState('');
   const [servidorSelected, setServidorSelected] = useState<servidor>({name: '', ip: ''});
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [conta, setConta] = useState('');
+  const [nomeCondominio, setNomeCondominio] = useState('');
+  const [isModalLoading, setIsModalLoading] = useState(false);
+
   useEffect(() => {
     setInfraData({ ...mock });
   }, []);
@@ -45,6 +52,19 @@ export default function Infraestrutura() {
       toast.error('Selecione todos os campos antes de prosseguir');
       return;
     }
+
+    setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio'}]); 
+    setCitySelected('');
+    setEstadoSelected('');
+    setBaseSelected('');
+    setServidorSelected({ name: '', ip: '' });
+
+    setIsModalOpen(true);
+
+  };
+
+  const onModalSubmit = useCallback(() => {
+    setIsModalLoading(true);
     setData([
       ...data,
       {
@@ -52,19 +72,47 @@ export default function Infraestrutura() {
         estado: estadoSelected,
         base: baseSelected,
         servidor: servidorSelected,
+        conta: 1,
+        name: 'Condomínio teste'
       },
     ]);
-    setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio'}]); 
-    setCitySelected('');
-    setEstadoSelected('');
-    setBaseSelected('');
-    setServidorSelected({ name: '', ip: '' });
-
+    setIsModalLoading(false);
     router.push('/client/condominios');
-  };
+  }, [setIsModalLoading]);
+  
+  const modalBodyContent = (
+    <div className='flex flex-col gap-4'>
+      <Input
+        placeholder='Numero de conta'
+        onChange={(e) => { setConta(e.target.value) }}
+        value={conta}
+        disabled={isModalLoading}
+        type="text"
+      />
+      <Input
+        placeholder='Nome do condomínio'
+        onChange={(e) => { setNomeCondominio(e.target.value) }}
+        value={nomeCondominio}
+        disabled={isModalLoading}
+        type="text"
+      />
+    </div>
+  );
+
+  const footerContent = <div></div>
 
   return (
     <>
+    <Modal
+            disabled={isModalLoading}
+            isOpen={isModalOpen}
+            title="Adicionar numero de conta"
+            actionLabel="Criar Script"
+            onClose={()=>setIsModalOpen(!isModalOpen)}
+            onSubmit={onModalSubmit}
+            body={modalBodyContent}
+            footer={footerContent}
+        />
       <h1 className=' text-2xl lg:text-5xl font-bold mb-4'>Infraestrutura</h1>
     <div className='flex flex-wrap-reverse w-full'>
     <div className='xl:w-4/6'>
