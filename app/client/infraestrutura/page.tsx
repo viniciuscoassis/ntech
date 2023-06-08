@@ -6,6 +6,7 @@ import Button from '@/components/Button';
 import AddCard from '@/components/cards/AddCard';
 import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
+import ServersContainers from '@/components/servidores/ServersContainer';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
@@ -64,7 +65,9 @@ export default function Infraestrutura() {
 
   return (
     <>
-      <h1 className=' text-2xl lg:text-5xl font-bold mb-10'>Infraestrutura</h1>
+      <h1 className=' text-2xl lg:text-5xl font-bold mb-4'>Infraestrutura</h1>
+    <div className='flex flex-wrap-reverse w-full'>
+    <div className='xl:w-4/6'>
       <h2 className='text-xl lg:text-3xl mb-5'>Cidade</h2>
      <CardSession>
         {infraData?.cidades.map((value, index) => (
@@ -117,24 +120,12 @@ export default function Infraestrutura() {
         />
       </CardSession>
       <Button onClick={submit} label='Confirmar dados' />
-      <h2 className='text-xl lg:text-3xl mb-5 mt-10'>Servidores</h2>
-      <CardSession>
-        {infraData?.servidores.map((value, index) => (
-          <InfoCard
-            key={index}
-            title={value.name}
-            selected={value.name === servidorSelected.name}
-            setObjectSelected={setServidorSelected}
-            aditionalData={value.ip}
-          >{value.ip}</InfoCard>
-        ))}
-        <AddCard
-          title='Adicione um servidor'
-          setInfraData={setInfraData}
-          infraData={infraData}
-          typeSubmit='servidor'
-        />
-      </CardSession>
+      </div>
+      <div className='flex flex-col xl:w-3/12 mb-6'>
+      <h2 className='text-xl lg:text-3xl mb-5'>Servidores</h2>
+      <ServersContainers />
+        </div>
+      </div>
     </>
   );
 }
