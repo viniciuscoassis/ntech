@@ -4,7 +4,7 @@ interface CardSessionProps {
 
 const CardSession: React.FC<CardSessionProps> = ({ children } ) => {
   return (
-    <div className='max-w-7xl overflow-x-auto h-80 p-2 flex flex-wrap mb-5'>
+    <div className='max-w-7xl overflow-x-auto p-2 flex flex-wrap mb-5'>
       {children}
     </div>
   );

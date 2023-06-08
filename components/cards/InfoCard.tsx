@@ -20,26 +20,25 @@ const InfoCard = ({
 }: InfoCardProps) => {
   return (
     <div
-      className={`bg-white
+      className={` h-20
+    bg-white
     text-black
-    min-w-[10rem]
-      lg:min-w-[20rem]
-      lg:w-80
-      h-5/6
+      w-44  
+      lg:w-64 
       rounded-2xl 
       shadow-lg
-      p-4
-      lg:p-8 
       text-center 
       text-sm
       lg:text-lg 
       flex 
       flex-col items-center 
-      mr-5 box-border 
+      justify-center
+      mr-5 mb-5 box-border 
       lg:hover:scale-105
       hover:cursor-pointer
       hover:transition-all
       ${selected ? 'border-4 lg:border-8 border-sky-950' : ''}
+      ${setObjectSelected ? "" : ""}
       `}
       onClick={() => {
         if (setSingleSeleted) {

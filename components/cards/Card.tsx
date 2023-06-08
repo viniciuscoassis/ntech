@@ -11,7 +11,7 @@ const Card = ({ title, quantity }: CardProps) => {
     bg-white
     text-black
     w-44  
-    lg:w-80 
+    lg:w-64 
       rounded-2xl 
       shadow-lg
       p-8 

@@ -4,6 +4,7 @@ import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
 import AddCard from '@/components/cards/AddCard';
+import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -12,10 +13,11 @@ import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
   estados: [{name: 'Minas Gerais'}, {name: 'São Paulo'}],
-  cidades: [{name: '16 - Limeira'}, {name: '17 - Ribeirão Preto'}, {name: '18 - Piracicaba'}, {name: '19 - Campinas'}, {name: '20 - Leme'}, {name: '21 - Rio Claro'}, {name: '22 - Americana'}, {name: '23 - Araras'} ],
-  bases: [],
+  cidades: [{name: 'Limeira'}, {name: 'Ribeirão Preto'}, {name: 'Piracicaba'}, {name: 'Campinas'}, {name: 'Leme'}, {name: 'Rio Claro'}, {name: 'Americana'}, {name: 'Araras'} ],
+  bases: [{name: 'Base teste'}],
   servidores: [
-    
+    {name: 'Servidor teste', ip: '123.231.222/12'}
+
   ],
 };
 export default function Infraestrutura() {
@@ -64,7 +66,7 @@ export default function Infraestrutura() {
     <>
       <h1 className=' text-2xl lg:text-5xl font-bold mb-10'>Infraestrutura</h1>
       <h2 className='text-xl lg:text-3xl mb-5'>Cidade</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+     <CardSession>
         {infraData?.cidades.map((value, index) => (
           <InfoCard
             key={index}
@@ -79,9 +81,9 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='cidade'
         />
-      </div>
+      </CardSession>
       <h2 className='text-xl lg:text-3xl mb-5'>Estados</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+     <CardSession>
         {infraData?.estados.map((value, index) => (
           <InfoCard
             key={index}
@@ -96,9 +98,9 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='estado'
         />
-      </div>
+      </CardSession>
       <h2 className='text-xl lg:text-3xl mb-5'>Bases de monitoramento</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+      <CardSession>
         {infraData?.bases.map((value, index) => (
           <InfoCard
             key={index}
@@ -113,10 +115,10 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='base'
         />
-      </div>
+      </CardSession>
       <Button onClick={submit} label='Confirmar dados' />
       <h2 className='text-xl lg:text-3xl mb-5 mt-10'>Servidores</h2>
-      <div className='flex items-center h-44 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+      <CardSession>
         {infraData?.servidores.map((value, index) => (
           <InfoCard
             key={index}
@@ -132,9 +134,7 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='servidor'
         />
-      </div>
-
-      
+      </CardSession>
     </>
   );
 }

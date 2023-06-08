@@ -61,11 +61,9 @@ const {data: relatorio, setData: setRelatorio} = useContext(RelatorioContext);
   return (
     <div
       className='
-       w-40
-      lg:w-80
-      h-5/6 
-      text-sm
-      lg:text-lg
+      h-20
+      w-44  
+      lg:w-64 
       text-center
       rounded-2xl 
       border-4 
