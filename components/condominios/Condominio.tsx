@@ -22,9 +22,9 @@ return (
     <div className='bg-white shadow-lg p-10 mr-5 mb-5 rounded-lg w-96 h-96 flex flex-col justify-between items-center '>
       <FaCity size={60} color='#082F49' />
       <div className=' w-full flex flex-col items-center'>
-        <div className='w-full flex justify-between'>
-          <div className=''>Nome</div> <div>{body.name}</div>
-        </div>
+       
+       <div className="font-bold text-xl mb-5">{body.name}</div>
+      
         <div className='w-full flex justify-between'>
           <div className=''>Número da conta</div> <div>{body.conta}</div>
         </div>
