@@ -1,4 +1,11 @@
+'use client'
+import { DataContext, DataContextType } from "@/app/context/DataContext";
+import CondominioInVpn from "@/components/condominios/VpnCondominioDisplay";
+import { useContext } from "react";
+
 export default function Vpns() {
+    const { data, setData } = useContext<DataContextType>(DataContext);
+
   return (
     <>
       <h1 className=' text-5xl font-bold mb-10'>VPNs</h1>
@@ -61,7 +68,8 @@ export default function Vpns() {
             <div className="w-1/3 max-w-1/3  text-center">0</div>
             <div className="w-1/3 max-w-1/3 text-right text-red-500 ">falha na conexão</div>
           </div>
-        </div>  
+        </div> 
+        {data ? data.map((value, index) => <CondominioInVpn key={index} name={value.name} time="0" />) : ""}
       </div>
     </>
   );
