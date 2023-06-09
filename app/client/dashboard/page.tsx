@@ -7,8 +7,8 @@ export default function Dashboard() {
       <h1 className='text-2xl lg:text-5xl font-bold mb-10'>Dashboard</h1>
       <h2 className='text-xl lg:text-3xl mb-5'>VPNs</h2>
       <CardSession>
-        <Card quantity={10} title='VPNs Ativas' />
-        <Card quantity={2} title='VPNs Desconectadas' />
+        <Card quantity={2} title='VPNs Ativas' />
+        <Card quantity={3} title='VPNs Desconectadas' />
       </CardSession>
 
       <h2 className='text-xl lg:text-3xl mb-5'>Licenças</h2>

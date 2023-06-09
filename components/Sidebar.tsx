@@ -1,12 +1,13 @@
 'use client';
 import SidebarItem from './SidebarItem';
 import SidebarLogo from './SidebarLogo';
-import { RiDashboardLine, RiRouteFill } from 'react-icons/ri';
+import { RiDashboardLine, RiRouteFill, RiCustomerService2Fill } from 'react-icons/ri';
 import { BsFillGearFill } from 'react-icons/bs';
 import { FaCity } from 'react-icons/fa';
 import { MdOutlineSecurity } from 'react-icons/md';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
-import { IoMdKey } from 'react-icons/io';
+import {CgProfile} from 'react-icons/cg';
+import { IoMdKey, IoMdNotificationsOutline } from 'react-icons/io';
 import {BiLogOut} from 'react-icons/bi'
 import { AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import SidebarFooter from './SIdebarFooter';
@@ -89,6 +90,21 @@ const Sidebar = () => {
       label: 'Licenças',
       href: '/client/licencas',
       icon: IoMdKey,
+    },
+      {
+      label: 'Perfil',
+      icon: CgProfile,
+      href: '/client/comingsoon',
+    },
+      {
+      label: 'Suporte',
+      icon: RiCustomerService2Fill,
+      href: '/client/comingsoon',
+    },
+      {
+      label: 'Notificações',
+      icon: IoMdNotificationsOutline,
+      href: '/client/comingsoon',
     },
     {
       label: 'Sair',
