@@ -3,19 +3,24 @@ import { DataContext } from '@/app/context/DataContext';
 import { RelatorioContext } from '@/app/context/RelatorioContext';
 import { infraDataInterface, servidor } from '@/app/interface/types';
 import Button from '@/components/Button';
+import Input from '@/components/Input';
+import Modal from '@/components/Modal';
 import AddCard from '@/components/cards/AddCard';
+import CardSession from '@/components/cards/CardSection';
 import InfoCard from '@/components/cards/InfoCard';
+import ServersContainers from '@/components/servidores/ServersContainer';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const mock: infraDataInterface = {
   estados: [{name: 'Minas Gerais'}, {name: 'São Paulo'}],
-  cidades: [{name: '16 - Limeira'}, {name: '17 - Ribeirão Preto'}, {name: '18 - Piracicaba'}, {name: '19 - Campinas'}, {name: '20 - Leme'}, {name: '21 - Rio Claro'}, {name: '22 - Americana'}, {name: '23 - Araras'} ],
-  bases: [],
+  cidades: [{name: 'Limeira'}, {name: 'Ribeirão Preto'}, {name: 'Piracicaba'}, {name: 'Campinas'}, {name: 'Leme'}, {name: 'Rio Claro'}, {name: 'Americana'}, {name: 'Araras'} ],
+  bases: [{name: 'Base teste'}],
   servidores: [
-    
+    {name: 'Servidor teste', ip: '123.231.222/12'}
+
   ],
 };
 export default function Infraestrutura() {
@@ -33,6 +38,11 @@ export default function Infraestrutura() {
   const [baseSelected, setBaseSelected] = useState('');
   const [servidorSelected, setServidorSelected] = useState<servidor>({name: '', ip: ''});
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [conta, setConta] = useState('');
+  const [nomeCondominio, setNomeCondominio] = useState('');
+  const [isModalLoading, setIsModalLoading] = useState(false);
+
   useEffect(() => {
     setInfraData({ ...mock });
   }, []);
@@ -42,6 +52,13 @@ export default function Infraestrutura() {
       toast.error('Selecione todos os campos antes de prosseguir');
       return;
     }
+
+    setIsModalOpen(true);
+  };
+
+  const onModalSubmit = useCallback(() => {
+    setIsModalLoading(true);
+    console.log(conta, nomeCondominio);
     setData([
       ...data,
       {
@@ -49,22 +66,58 @@ export default function Infraestrutura() {
         estado: estadoSelected,
         base: baseSelected,
         servidor: servidorSelected,
+        conta: conta,
+        name: nomeCondominio
       },
     ]);
-    setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio'}]); 
-    setCitySelected('');
-    setEstadoSelected('');
-    setBaseSelected('');
-    setServidorSelected({ name: '', ip: '' });
+    setIsModalLoading(false);
+    // setCitySelected('');
+    // setEstadoSelected('');
+    // setBaseSelected('');
+    // setServidorSelected({ name: '', ip: '' });
+    setRelatorio([...relatorio, { name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio' }]); 
 
     router.push('/client/condominios');
-  };
+  }, [setIsModalLoading, citySelected, estadoSelected, baseSelected, servidorSelected, conta, nomeCondominio]);
+  
+  const modalBodyContent = (
+    <div className='flex flex-col gap-4'>
+      <Input
+        placeholder='Numero de conta'
+        onChange={(e) => { setConta(e.target.value) }}
+        value={conta}
+        disabled={isModalLoading}
+        type="text"
+      />
+      <Input
+        placeholder='Nome do condomínio'
+        onChange={(e) => { setNomeCondominio(e.target.value) }}
+        value={nomeCondominio}
+        disabled={isModalLoading}
+        type="text"
+      />
+    </div>
+  );
+
+  const footerContent = <div></div>
 
   return (
     <>
-      <h1 className=' text-2xl lg:text-5xl font-bold mb-10'>Infraestrutura</h1>
+    <Modal
+            disabled={isModalLoading}
+            isOpen={isModalOpen}
+            title="Adicionar numero de conta"
+            actionLabel="Criar Condomínio"
+            onClose={()=>setIsModalOpen(!isModalOpen)}
+            onSubmit={onModalSubmit}
+            body={modalBodyContent}
+            footer={footerContent}
+        />
+      <h1 className=' text-2xl lg:text-5xl font-bold mb-4'>Infraestrutura</h1>
+    <div className='flex flex-wrap-reverse w-full'>
+    <div className='xl:w-4/6'>
       <h2 className='text-xl lg:text-3xl mb-5'>Cidade</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+     <CardSession>
         {infraData?.cidades.map((value, index) => (
           <InfoCard
             key={index}
@@ -79,9 +132,9 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='cidade'
         />
-      </div>
+      </CardSession>
       <h2 className='text-xl lg:text-3xl mb-5'>Estados</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+     <CardSession>
         {infraData?.estados.map((value, index) => (
           <InfoCard
             key={index}
@@ -96,9 +149,9 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='estado'
         />
-      </div>
+      </CardSession>
       <h2 className='text-xl lg:text-3xl mb-5'>Bases de monitoramento</h2>
-      <div className='flex items-center h-32 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
+      <CardSession>
         {infraData?.bases.map((value, index) => (
           <InfoCard
             key={index}
@@ -113,28 +166,14 @@ export default function Infraestrutura() {
           infraData={infraData}
           typeSubmit='base'
         />
-      </div>
+      </CardSession>
       <Button onClick={submit} label='Confirmar dados' />
-      <h2 className='text-xl lg:text-3xl mb-5 mt-10'>Servidores</h2>
-      <div className='flex items-center h-44 lg:w-10/12 max-w-screen-lg overflow-x-auto'>
-        {infraData?.servidores.map((value, index) => (
-          <InfoCard
-            key={index}
-            title={value.name}
-            selected={value.name === servidorSelected.name}
-            setObjectSelected={setServidorSelected}
-            aditionalData={value.ip}
-          >{value.ip}</InfoCard>
-        ))}
-        <AddCard
-          title='Adicione um servidor'
-          setInfraData={setInfraData}
-          infraData={infraData}
-          typeSubmit='servidor'
-        />
       </div>
-
-      
+      <div className='flex flex-col xl:w-3/12 mb-6'>
+      <h2 className='text-xl lg:text-3xl mb-5'>Servidores</h2>
+      <ServersContainers />
+        </div>
+      </div>
     </>
   );
 }

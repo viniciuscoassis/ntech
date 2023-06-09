@@ -5,83 +5,84 @@ import Condominio from '@/components/condominios/Condominio';
 import AccountModal from '@/components/modals/AccountModal';
 import ScriptModal from '@/components/modals/ScriptModal';
 import { useRouter } from 'next/navigation';
-import { useContext, useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
-import { useLocalStorage } from 'usehooks-ts';
+import { useContext, useEffect } from 'react';
 
 export default function Condominios() {
   const { data, setData } = useContext<DataContextType>(DataContext);
-  const [ipAcesso, setIpAcesso] = useState('');
-  const [ipImagem, setIpImagem] = useState('');
-  const [ipVoip, setIpVoip] = useState('');
-  const [ipsSalvosStorage, setIpSalvosStorage] = useLocalStorage<ipsSalvos>('ipsFixos', {ipAcesso, ipImagem, ipVoip});
-  const [ipsSalvos, setIpsSalvos] = useState({ipAcesso: "", ipImagem: "", ipVoip: ""});
-
-  interface ipsSalvos {
-    ipAcesso: string;
-    ipImagem: string;
-    ipVoip: string;
-  }
-
   const router = useRouter();
 
-  const submit = () => {
-    if (ipAcesso === '' || ipImagem === '' || ipVoip === '') {
-      toast.error("Preencha todos os Ips");
-      return;
-    }
-    setIpSalvosStorage({ ...ipsSalvosStorage, ipAcesso, ipImagem, ipVoip });
-    setIpsSalvos({ ...ipsSalvos, ipAcesso, ipImagem, ipVoip });
-    toast.success('Ips salvos');
-  }
+  useEffect(()=> {
+    console.log(data);
+  },[data])
 
-  useEffect(() => {
-    setIpsSalvos({...ipsSalvosStorage});
-    
-  }, [ipsSalvosStorage]);
   return (
     <>
       <ScriptModal />
       <AccountModal />
       <h1 className=' text-5xl font-bold mb-10'>Condomínios</h1>
-      <div>Configurações base - formato XXX.XXX.XXX.X/XX
-        <p>(Perguntar ao responsável n-tech)</p></div>
-      <div className='flex'>
-        <div className='flex flex-col justify-between w-1/4 border mb-5 mr-5'>
-          <input className='h-2/6 border' placeholder='Ip do servidor de acesso' value={ipAcesso} onChange={(e) => setIpAcesso(e.target.value)} />
-          <input className='h-2/6 border' placeholder='Ip do servidor de imagem' value={ipImagem} onChange={(e) => setIpImagem(e.target.value)} />
-          <input className='h-2/6 border' placeholder='Ip do servidor de voip' value={ipVoip} onChange={(e) => setIpVoip(e.target.value)} />
-          <button onClick={submit} className='bg-primary text-white'>Salvar</button>
-        </div>
-     
-        {ipsSalvos.ipAcesso != ''? 
-          <div className='flex flex-col justify-between w-1/4 border mb-5 bg-white'>
-            <div className='h-2/6 border' placeholder='Ip do servidor de acesso'>{ipsSalvos.ipAcesso}</div>
-            <div className='h-2/6 border' placeholder='Ip do servidor de imagem'>{ipsSalvos.ipImagem}</div>
-            <div className='h-2/6 border' placeholder='Ip do servidor de voip'>{ipsSalvos.ipVoip}</div>
-            <div className=' text-primary text-center border-0'>Ips Salvos</div>
-
-          </div> : ''}
-      </div>
-
       <div className='flex flex-wrap'>
+          <Condominio
+              name={'Condominio teste'}
+              conta={18}
+              cidade={'Ribeirao Preto'}
+              estado={'São Paulo'}
+              base={'Base teste'}
+            />
+              <Condominio
+              name={'Condominio teste 2'}
+              conta={18}
+              cidade={'Ribeirao Preto'}
+              estado={'São Paulo'}
+              base={'Base teste 2'}
+            />
+              <Condominio
+              name={'Condominio teste 3'}
+              conta={18}
+              cidade={'Ribeirao Preto'}
+              estado={'São Paulo'}
+              base={'Base teste 3'}
+            />
+              <Condominio
+              name={'Condominio teste 4'}
+              conta={18}
+              cidade={'Limeira'}
+              estado={'São Paulo'}
+              base={'Base teste 4'}
+            />
+
+              <Condominio
+              name={'Condominio teste 5'}
+              conta={18}
+              cidade={'Poços de Caldas'}
+              estado={'Minas Gerais'}
+              base={'Base teste 5'}
+            />
+            <Condominio
+              name={'Condominio teste 6'}
+              conta={18}
+              cidade={'Poços de Caldas'}
+              estado={'Minas Gerais'}
+              base={'Base teste 6'}
+            />
         {data.length != 0 ? (
           data?.map((value, index) => (
             <Condominio
+              name={value.name}
+              conta={value.conta}
               cidade={value.cidade}
               estado={value.estado}
               base={value.base}
               key={index}
             />
           ))
-        ) : (
-          <div>
-            <div className=''>Não há condominios registrados</div>
-            <Button
-              onClick={() => router.push('/client/infraestrutura')}
-              label='Registre'
-            />
-          </div>
+        ) : (''
+          // <div>
+          //   <div className=''>Não há condominios registrados</div>
+          //   <Button
+          //     onClick={() => router.push('/client/infraestrutura')}
+          //     label='Registre'
+          //   />
+          // </div>
         )}
 
       </div>

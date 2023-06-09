@@ -1,12 +1,13 @@
 'use client';
 import SidebarItem from './SidebarItem';
 import SidebarLogo from './SidebarLogo';
-import { RiDashboardLine, RiRouteFill } from 'react-icons/ri';
+import { RiDashboardLine, RiRouteFill, RiCustomerService2Fill } from 'react-icons/ri';
 import { BsFillGearFill } from 'react-icons/bs';
 import { FaCity } from 'react-icons/fa';
 import { MdOutlineSecurity } from 'react-icons/md';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
-import { IoMdKey } from 'react-icons/io';
+import {CgProfile} from 'react-icons/cg';
+import { IoMdKey, IoMdNotificationsOutline } from 'react-icons/io';
 import {BiLogOut} from 'react-icons/bi'
 import { AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import SidebarFooter from './SIdebarFooter';
@@ -90,6 +91,21 @@ const Sidebar = () => {
       href: '/client/licencas',
       icon: IoMdKey,
     },
+      {
+      label: 'Perfil',
+      icon: CgProfile,
+      href: '/client/comingsoon',
+    },
+      {
+      label: 'Suporte',
+      icon: RiCustomerService2Fill,
+      href: '/client/comingsoon',
+    },
+      {
+      label: 'Notificações',
+      icon: IoMdNotificationsOutline,
+      href: '/client/comingsoon',
+    },
     {
       label: 'Sair',
       icon: BiLogOut,
@@ -101,17 +117,17 @@ const Sidebar = () => {
     <div
       className={`${
         open ? 'w-72' : 'w-20'
-      } bg-sky-950 col-span-1 h-full p-3 md:pr-6 relative transition-all duration-500`}
+      } bg-sky-950 col-span-1 h-full  max-w-full no-scrollbar overflow-y-scroll p-3 md:pr-6 relative transition-all duration-500`}
     >
       <div
-        className=' flex items-center justify-center absolute cursor-pointer rounded-full -right-3 top-9 w-7 h-7 border-2 bg-white border-sky-950'
+        className=' flex items-center justify-center absolute cursor-pointer rounded-full -right-2 top-9 w-7 h-7 border-2 bg-white z-50 border-sky-950'
         onClick={() => {
           setOpen(!open);
         }}
       >
         {open ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}
       </div>
-      <div className='flex flex-col'>
+      <div className='flex flex-col max-h-[80%]'>
         <div className='space-y-1 justify-center'>
           <SidebarLogo open={open} />
           {items.map((item, index) => (

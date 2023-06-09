@@ -9,6 +9,7 @@ const SidebarFooter: React.FC<Props>= ({open}) => {
     <div
       className={`
       ${open ? 'w-52' : ''}
+      invisible lg:block
       absolute bottom-0 
      text-white
     h-14
