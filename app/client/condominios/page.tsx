@@ -5,11 +5,15 @@ import Condominio from '@/components/condominios/Condominio';
 import AccountModal from '@/components/modals/AccountModal';
 import ScriptModal from '@/components/modals/ScriptModal';
 import { useRouter } from 'next/navigation';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 export default function Condominios() {
   const { data, setData } = useContext<DataContextType>(DataContext);
   const router = useRouter();
+
+  useEffect(()=> {
+    console.log(data);
+  },[data])
 
   return (
     <>
@@ -20,6 +24,8 @@ export default function Condominios() {
         {data.length != 0 ? (
           data?.map((value, index) => (
             <Condominio
+              name={value.name}
+              conta={value.conta}
               cidade={value.cidade}
               estado={value.estado}
               base={value.base}

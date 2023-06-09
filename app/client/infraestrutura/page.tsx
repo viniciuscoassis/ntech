@@ -53,18 +53,14 @@ export default function Infraestrutura() {
       return;
     }
 
-    setRelatorio([...relatorio, {name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio'}]); 
-    setCitySelected('');
-    setEstadoSelected('');
-    setBaseSelected('');
-    setServidorSelected({ name: '', ip: '' });
-
     setIsModalOpen(true);
+        console.log(citySelected, baseSelected);
 
   };
 
   const onModalSubmit = useCallback(() => {
     setIsModalLoading(true);
+    console.log(citySelected, baseSelected);
     setData([
       ...data,
       {
@@ -77,8 +73,14 @@ export default function Infraestrutura() {
       },
     ]);
     setIsModalLoading(false);
+    // setCitySelected('');
+    // setEstadoSelected('');
+    // setBaseSelected('');
+    // setServidorSelected({ name: '', ip: '' });
+    setRelatorio([...relatorio, { name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio' }]); 
+
     router.push('/client/condominios');
-  }, [setIsModalLoading]);
+  }, [setIsModalLoading, citySelected, estadoSelected, baseSelected, servidorSelected]);
   
   const modalBodyContent = (
     <div className='flex flex-col gap-4'>

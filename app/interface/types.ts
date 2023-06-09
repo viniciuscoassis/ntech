@@ -21,9 +21,11 @@ export interface infraDataInterface {
 }
 
 export interface condominio {
-    estado: string,
+  name: string  ,
+  estado: string,
     cidade: string,
-    base: string
+    base: string,
+    conta: number,
 }
 
 export interface data {
