@@ -54,13 +54,11 @@ export default function Infraestrutura() {
     }
 
     setIsModalOpen(true);
-        console.log(citySelected, baseSelected);
-
   };
 
   const onModalSubmit = useCallback(() => {
     setIsModalLoading(true);
-    console.log(citySelected, baseSelected);
+    console.log(conta, nomeCondominio);
     setData([
       ...data,
       {
@@ -68,8 +66,8 @@ export default function Infraestrutura() {
         estado: estadoSelected,
         base: baseSelected,
         servidor: servidorSelected,
-        conta: 1,
-        name: 'Condomínio teste'
+        conta: conta,
+        name: nomeCondominio
       },
     ]);
     setIsModalLoading(false);
@@ -80,7 +78,7 @@ export default function Infraestrutura() {
     setRelatorio([...relatorio, { name: session.data?.user?.name, date: Date.now(), message: 'Adicionou um novo condomínio' }]); 
 
     router.push('/client/condominios');
-  }, [setIsModalLoading, citySelected, estadoSelected, baseSelected, servidorSelected]);
+  }, [setIsModalLoading, citySelected, estadoSelected, baseSelected, servidorSelected, conta, nomeCondominio]);
   
   const modalBodyContent = (
     <div className='flex flex-col gap-4'>
@@ -109,7 +107,7 @@ export default function Infraestrutura() {
             disabled={isModalLoading}
             isOpen={isModalOpen}
             title="Adicionar numero de conta"
-            actionLabel="Criar Script"
+            actionLabel="Criar Condomínio"
             onClose={()=>setIsModalOpen(!isModalOpen)}
             onSubmit={onModalSubmit}
             body={modalBodyContent}
