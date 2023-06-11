@@ -94,17 +94,17 @@ const Sidebar = () => {
       {
       label: 'Perfil',
       icon: CgProfile,
-      href: '/client/comingsoon',
+      href: '/client/perfil',
     },
       {
       label: 'Suporte',
       icon: RiCustomerService2Fill,
-      href: '/client/comingsoon',
+      href: '/client/suport',
     },
       {
       label: 'Notificações',
       icon: IoMdNotificationsOutline,
-      href: '/client/comingsoon',
+      href: '/client/notifications',
     },
     {
       label: 'Sair',
