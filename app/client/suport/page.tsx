@@ -1,5 +1,6 @@
 'use client'
 import { useSession } from "next-auth/react";
+import Button from '@/components/Button'
 
 const SuportePage = () => {
   const session = useSession();
@@ -16,8 +17,8 @@ const SuportePage = () => {
           <input className="w-full border" value={session?.data?.user?.email || undefined}></input>
         </div>
         <div className="font-bold">mensagem:</div>
-        <textarea className="border"></textarea>
-       
+        <textarea className="border mb-5"></textarea>
+       <Button label="enviar" fullWidth ></Button>
       </form>
         </div>
 </>
