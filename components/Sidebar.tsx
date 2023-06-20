@@ -112,7 +112,7 @@ const Sidebar = () => {
       onClick: () => {signOut(); router.push('/')},
     },
   ];
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <div
       className={`${
