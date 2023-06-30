@@ -115,7 +115,7 @@ export default function Infraestrutura() {
         />
       <h1 className=' text-2xl lg:text-5xl font-bold mb-4'>Infraestrutura</h1>
     <div className='flex flex-wrap-reverse w-full'>
-    <div className='xl:w-4/6'>
+    <div className='xl:w-4/6 flex flex-col justify-between'>
       <div className='w-4/6 flex items-center justify-between'>
       <h2 className='text-xl lg:text-1xl '>Cidade</h2>
       <select name='Escolha a cidade' className='h-5 w-32' onChange={e => setCitySelected(e.target.value)}>
