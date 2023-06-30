@@ -24,7 +24,7 @@ export default function ClientLayout({
         <div className='container h-full max-h-screen xl:px-30'>
           <div className='flex w-screen h-full bg-[#F4F9FD]'>
             <Sidebar />
-          <div className="max-h-screen h-screen">
+          <div className="max-h-screen h-screen w-full">
           <Navbar/>
             <div className=' border-x-[-1px] border-neutral-800 p-5 lg:p-10 max-h-[80%] overflow-y-scroll overflow-x-hidden'>
               {children}
