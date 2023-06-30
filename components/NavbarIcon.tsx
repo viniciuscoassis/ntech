@@ -11,11 +11,11 @@ const NavbarIcon: React.FC<SidebarItemProps> = ({
   href,
   icon: Icon,
 }) => {
-    const router = useRouter();
+    const router =  useRouter();
 
     return <>
     <div  onClick={() => router.push(`${href}`)} className="cursor-pointer flex flex-col items-center justify-center">
-        <Icon size={28} color='black' />
+        <Icon size={28} color='black'/>
         <p className="text-xs text-center">{label}</p>
     </div>
     </>;

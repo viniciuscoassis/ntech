@@ -90,27 +90,7 @@ const Sidebar = () => {
       label: 'Licenças',
       href: '/client/licencas',
       icon: IoMdKey,
-    },
-      {
-      label: 'Perfil',
-      icon: CgProfile,
-      href: '/client/perfil',
-    },
-      {
-      label: 'Suporte',
-      icon: RiCustomerService2Fill,
-      href: '/client/suport',
-    },
-      {
-      label: 'Notificações',
-      icon: IoMdNotificationsOutline,
-      href: '/client/notifications',
-    },
-    {
-      label: 'Sair',
-      icon: BiLogOut,
-      onClick: () => {signOut(); router.push('/')},
-    },
+    }
   ];
   const [open, setOpen] = useState(true);
   return (
@@ -137,7 +117,6 @@ const Sidebar = () => {
               href={item.href}
               icon={item.icon}
               open={open}
-              onClick={item.onClick}
             />
           ))}
         </div>
