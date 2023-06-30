@@ -5,6 +5,7 @@ import useAccountModal from "@/hooks/useAccountModal";
 import { useContext } from "react";
 import { ScriptContext } from "@/app/context/Script";
 import useScriptModal from "@/hooks/useScriptModal";
+import { VscDebugDisconnect } from "react-icons/vsc";
 
 const Condominio = (body: condominio) => {
   const accountModal = useAccountModal();
@@ -19,27 +20,18 @@ const Condominio = (body: condominio) => {
 return (
   <>
     {' '}
-    <div className='bg-white shadow-lg p-10 mr-5 mb-5 rounded-lg w-96 h-96 flex flex-col justify-between items-center '>
-      <FaCity size={60} color='#082F49' />
-      <div className=' w-full flex flex-col items-center'>
-       
-       <div className="font-bold text-xl mb-5">{body.name}</div>
-      
-        <div className='w-full flex justify-between'>
-          <div className=''>Número da conta</div> <div>{body.conta}</div>
+
+       <div className="p-8 flex justify-between items-center border-b-2 h-20 ">
+          <div className="flex items-center max-w-1/3 w-1/3 ">
+            <div className="font-bold">{body.name}</div>
+          </div>
+          <div className="w-1/3 max-w-1/3 text-center">{body.conta}</div>
+          <div className="w-1/3 max-w-1/3 text-right text-green-500 ">{body.cidade}</div>
+          <div className="w-1/3 max-w-1/3 text-right text-green-500 ">{body.cidade}</div>
+          <div className="absolute cursor-pointer right-20 top-7"><VscDebugDisconnect size={28}/></div>
         </div>
-        <div className='w-full flex justify-between'>
-          <div className=''>Estado</div> <div>{body.estado}</div>
-        </div>
-        <div className='w-full flex justify-between'>
-          <div className=''>Cidade</div> <div>{body.cidade}</div>
-        </div>{' '}
-        <div className='w-full flex justify-between'>
-          <div className=''>Base</div> <div>{body.base}</div>
-        </div>{' '}
-      </div>
       <Button onClick={submit} label={'Gerar script'} />
-    </div>
+
   </>
 );
 }
