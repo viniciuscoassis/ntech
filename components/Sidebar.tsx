@@ -100,7 +100,7 @@ const Sidebar = () => {
       } bg-sky-950 col-span-1 h-full  max-w-full no-scrollbar overflow-y-scroll p-3 md:pr-6 relative transition-all duration-500`}
     >
       <div
-        className=' flex items-center justify-center absolute cursor-pointer rounded-full -right-2 top-9 w-7 h-7 border-2 bg-white z-50 border-sky-950'
+        className=' flex items-center justify-center absolute cursor-pointer rounded-full -right-2 top-9 w-7 h-7 border-2 z-[1000] bg-white border-sky-950'
         onClick={() => {
           setOpen(!open);
         }}
