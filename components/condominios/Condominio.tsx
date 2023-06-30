@@ -21,16 +21,14 @@ return (
   <>
     {' '}
 
-       <div className="p-8 flex justify-between items-center border-b-2 h-20 ">
-          <div className="flex items-center max-w-1/3 w-1/3 ">
-            <div className="font-bold">{body.name}</div>
-          </div>
-          <div className="w-1/3 max-w-1/3 text-center">{body.conta}</div>
-          <div className="w-1/3 max-w-1/3 text-right text-green-500 ">{body.cidade}</div>
-          <div className="w-1/3 max-w-1/3 text-right text-green-500 ">{body.cidade}</div>
-          <div className="absolute cursor-pointer right-20 top-7"><VscDebugDisconnect size={28}/></div>
-        </div>
+       <div className=" flex justify-between items-center border-b-2 h-14 ">
+          <div className="w-1/6 max-w-1/6 font-bold">{body.name}</div>
+          <div className="w-1/6 max-w-1/6 ">{body.conta}</div>
+          <div className="w-1/6 max-w-1/6 ">{body.cidade}</div>
+          <div className="w-1/6 max-w-1/6 ">{body.estado}</div>
+          <div className="w-1/6 max-w-1/6 ">{body.base}</div>
       <Button onClick={submit} label={'Gerar script'} />
+        </div>
 
   </>
 );
